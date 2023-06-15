@@ -1,0 +1,39 @@
+streamlined_bundle:
+  links:
+    user_website: "https://www.example.com"
+    socials:
+      facebook: "https://www.facebook.com/example"
+      twitter: "https://twitter.com/example"
+      instagram: "https://www.instagram.com/example"
+      linkedin: "https://www.linkedin.com/company/example"
+      youtube: "https://www.youtube.com/channel/example"
+      #etc..
+    downloads:
+      android: "https://play.google.com/store/apps/details?id=com.example"
+      ios: "https://apps.apple.com/us/app/example/id1234567890"
+      #etc..
+    overridable:
+      faq: "https://www.example.com/faq"
+      privacy: "https://www.example.com/privacy"
+      terms: "https://www.example.com/terms"
+  app:
+    name: "Example"
+    motto: "Your motto."
+    description: "Your description (used for seo)."
+    logo: "https://www.example.com/logo.png"
+    favicon: "https://www.example.com/favicon.png"
+    allow_dark_mode: false
+    disable_destination_obfuscation: false
+    always_instant_redirect: false
+  #    allow_uploads: true
+  svg:
+    iconBackgroundColor: "#000000"
+    textBackgroundColor: "#ffffff"
+    textColor: "#ffffff"
+  apps:
+    wordpress:
+      shared_with: custom_app
+    custom_app:
+      name: "Example2"
+      icon: "https://www.example.com/ios.png"
+    #etc..

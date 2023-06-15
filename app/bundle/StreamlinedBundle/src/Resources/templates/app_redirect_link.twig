@@ -1,0 +1,77 @@
+{% extends '@StreamlinedBundle/base.html.twig' %}
+
+{% block body %}
+    <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            {% if cookie_already_set %}
+
+                <div style="font-size: 34px" class="font-bold text-center">
+                    <div class="mx-auto w-fit rounded-lg p-2 flex content-center" style="background-color: #4F46E5;">
+                        <div id="countdown" class="animate-countdown h-12 text-white px-4 " >3</div>
+                    </div>
+                </div>
+                <h2 class="mt-6 mb-6 text-center text-3xl font-extrabold text-gray-900">
+                    Pointing you in the right direction...
+                </h2>
+
+                {% if show_link %}
+                    <p class="mt-2 text-center text-sm text-gray-600">
+                       You are on your way to: <b>{{ user_instance }}/{{ pointer }}</b>
+                    </p>
+                {% endif %}
+
+                <script>
+                    setTimeout(function() {
+                        window.location.href = '{{ url|escape }}';
+                    }, 3000);
+                </script>
+
+            {% else %}
+                <div>
+                    <svg class="mx-auto h-12 w-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                         stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
+                    </svg>
+                    <h2 class="mt-6 mb-6 text-center text-3xl font-extrabold text-gray-900">
+                        Pointing you in the right direction...
+                    </h2>
+
+                    <p class="mt-2 text-justify text-sm text-gray-600">
+                        This tool allows the documentation to link you to specific pages in
+                        your {{ streamlined_config('streamlined_bundle.streamlined').apps[app].name }}
+                        instance. See the FAQ for more information.
+                    </p>
+                    <p class="mt-2 text-justify text-sm text-gray-600">
+                        Configure this tool by entering the URL of
+                        your {{ streamlined_config('streamlined_bundle.streamlined').apps[app].name }} instance.<br/>
+                    </p>
+                    <p class="mt-2 text-justify text-sm text-gray-600">
+                        Note: This URL is only stored in your browser. To delete it you need to clear your browser cache
+                        for this website.
+                    </p>
+                </div>
+                <form class="space-y-6" method="POST" id="save-cookie-form" data-app="{{ cookie }}">
+                    <input type="hidden" name="remember" value="True">
+                    <div class="rounded-md shadow-sm -space-y-px">
+                        <div>
+                            <label for="app-instance" class="sr-only">URL</label>
+                            <input id="app-instance" name="app-instance" type="url" required
+                                   class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                   placeholder="Type your {{ streamlined_config('streamlined_bundle.streamlined').apps[app].name }} instance URL here">
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit"
+                                class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Save my instance
+                        </button>
+                    </div>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+

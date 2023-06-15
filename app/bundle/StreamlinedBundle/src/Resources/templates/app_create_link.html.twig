@@ -1,0 +1,241 @@
+{% extends '@StreamlinedBundle/base.html.twig' %}
+
+{% block body %}
+
+    <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 dark:bg-gray-900">
+        <div class="max-w-md w-full space-y-8">
+            <div>
+                <div class="mx-auto w-fit rounded-lg p-2" style="background-color: #4F46E5;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="white"
+                         class="w-auto mx-auto h-12 ">
+                        <path xmlns="http://www.w3.org/2000/svg"
+                              d="M 40.072266 3.0039062 A 2.935 2.935 0 0 0 37.947266 3.8496094 L 34.439453 7.3496094 L 38.648438 11.621094 L 42.130859 8.1621094 A 2.994 2.994 0 0 0 43 6.0546875 A 3.071 3.071 0 0 0 42.136719 3.9140625 L 42.115234 3.8925781 A 2.935 2.935 0 0 0 40.072266 3.0039062 z M 34.435547 10.169922 L 34.421875 10.183594 L 32.652344 11.949219 L 28.441406 10.486328 A 1.0001 1.0001 0 0 0 28.146484 10.429688 A 1.0001 1.0001 0 0 0 27.181641 11.066406 L 23.068359 21.636719 A 1.0001 1.0001 0 0 0 24.355469 22.935547 L 34.849609 18.947266 A 1.0001 1.0001 0 0 0 35.447266 17.707031 L 34.060547 13.367188 L 35.828125 11.607422 L 35.835938 11.599609 L 34.435547 10.169922 z M 19 27 A 1 1 0 0 0 18 28 L 18 32 L 32 32 L 32 28 A 1 1 0 0 0 31 27 L 19 27 z M 12 34 A 1 1 0 0 0 11 35 L 11 39 L 24 39 L 24 34 L 12 34 z M 26 34 L 26 39 L 39 39 L 39 35 A 1 1 0 0 0 38 34 L 26 34 z M 5 41 A 1 1 0 0 0 4 42 L 4 45 A 1 1 0 0 0 5 46 L 17 46 L 17 41 L 5 41 z M 19 41 L 19 46 L 31 46 L 31 41 L 19 41 z M 33 41 L 33 46 L 45 46 A 1 1 0 0 0 46 45 L 46 42 A 1 1 0 0 0 45 41 L 33 41 z"/>
+                    </svg>
+                </div>
+                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
+                    Build Your Link
+                </h2>
+            </div>
+            <form class="mt-8 space-y-6" method="POST" id="myForm">
+                <div class="rounded-md shadow-sm">
+                    <div class="mb-6">
+                        <label for="app"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span
+                                    class="text-red-500">*</span> Select an app: </label>
+                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-4">
+                            Used to allow the user to have a different website for each app they bought from you.</p>
+                        <select required name="app" id="app"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                            {% if streamlined_config("streamlined_bundle.streamlined").apps|length > 0 %}
+                                {% for app in streamlined_config("streamlined_bundle.streamlined").apps %}
+                                    <option value="{{ app["name"] }}">{{ app["name"] }}</option>
+                                {% endfor %}
+                            {% else %}
+                                <option value="null" selected disabled>No apps configured</option>
+                            {% endif %}
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="query" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span
+                                    class="text-red-500">*</span> Redirect to:</label>
+                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-4">
+                            Do not include the website URL, just the query.</p>
+                        <input id="query" name="query" type="text" required
+                               class="appearance-none  relative block w-full px-3 py-2 border rounded-lg focus:outline-none  focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
+                               placeholder="Ex: /some-page?some=query&other=query">
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="label" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span
+                                    class="text-red-500">*</span>
+                            Label:
+                        </label>
+                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-4">
+                            A descriptive text that will appear on the redirect page and the icon.
+                        </p>
+                        <input id="label" name="label" type="text" required
+                               class="appearance-none  relative block w-full px-3 py-2 border rounded-lg focus:outline-none  focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
+                               placeholder="Describe this link.">
+                    </div>
+
+                    <div class="space-y-4 mb-6">
+                        {% if not streamlined_config("streamlined_bundle.streamlined").app.always_instant_redirect %}
+
+                            <div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" name="instant_redirect" id="instant_redirect" value=""
+                                           class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                    <label for="instant_redirect"
+                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Instant
+                                        redirect</label>
+                                </label>
+                                <p id="helper-checkbox-text"
+                                   class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-2">
+                                    Instead of waiting 3 seconds we will redirect the user instantly. (Works only if the
+                                    user already provided the url to their website.)
+                                </p>
+                            </div>
+                        {% endif %}
+                        {% if not streamlined_config("streamlined_bundle.streamlined").app.disable_destination_obfuscation %}
+
+                            <div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" name="hide-url-checkbox" id="hide-url-checkbox" value=""
+                                           class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                    <label for="hide-url-checkbox"
+                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Obfuscate
+                                        destination</label>
+                                </label>
+                                <p id="helper-checkbox-text"
+                                   class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-2">
+                                    Encode your "Redirect to" query so that it is not readable to the user. This can
+                                    help if you are trying to add utm parameters to your query.
+                                </p>
+                            </div>
+
+                            <div id="redirect-url-wrapper" class="hidden ms-3">
+                                <label class="relative  inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" id="show-redirect-url-checkbox"
+                                           name="show-redirect-url-checkbox" value="" checked
+                                           class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                    <label for="show-redirect-url-checkbox"
+                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Show
+                                        destination to user</label>
+                                </label>
+                                <p id="helper-checkbox-text"
+                                   class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-2">
+                                    Before redirecting we will still show the destination to the user.
+                                </p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if streamlined_config("streamlined_bundle.streamlined").app.allow_uploads %}
+                        <div class="mb-6">
+                            <div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" name="show-preview-upload" id="show-preview-upload" value=""
+                                           class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                    <label for="show-preview-upload"
+                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Upload
+                                        preview image</label>
+                                </label>
+                                <p id="helper-checkbox-text"
+                                   class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-2">
+                                    Display a custom icon for people to recognize your links. To increase your chances
+                                    for
+                                    the
+                                    user to recognize links that point them to their website you can do the following:
+                                </p>
+                            </div>
+                            <div class="hidden" id="upload-box">
+                                <ul class="max-w-md space-y-1 text-gray-500 text-xs  list-disc list-inside dark:text-gray-400 mb-4">
+                                    <li>Include an icon/color for the current app you are creating a link for.</li>
+                                    <li>Maintain a consistent visual appearance in the design.</li>
+                                </ul>
+                                <p id="helper-checkbox-text"
+                                   class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-4">
+                                    Some examples of good custom icons:
+                                    <span class="flex mt-2">
+                                         <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="154" height="28"
+                                              aria-label="MY: ANALYTICS" style="border-radius:4px"><g
+                                                     shape-rendering="crispEdges"><path fill="#555" d="M0 0h55.5v28H0z"/><path
+                                                         fill="#03a9f4" d="M55.5 0H154v28H55.5z"/></g><g fill="#fff"
+                                                                                                         font-family="Verdana,Geneva,DejaVu Sans,sans-serif"
+                                                                                                         font-size="100"
+                                                                                                         text-anchor="middle"
+                                                                                                         text-rendering="geometricPrecision"><path
+                                                         d="M16.047 7.523a.429.429 0 0 0-.303.129l-6.905 7.002a.343.343 0 0 0-.099.241.345.345 0 0 0 .346.345h1.281v4.92c0 .159.128.287.287.287h4.842v-2.245l-1.859-1.86a1.474 1.474 0 0 1-.577.117 1.477 1.477 0 0 1 0-2.955 1.476 1.476 0 0 1 1.36 2.054l1.076 1.077V13.36a1.478 1.478 0 0 1 .554-2.847 1.477 1.477 0 0 1 .553 2.847v3.275l1.076-1.077a1.475 1.475 0 0 1-.117-.577 1.477 1.477 0 1 1 1.477 1.478 1.474 1.474 0 0 1-.577-.118l-1.86 1.862v2.244h4.843a.286.286 0 0 0 .287-.287v-4.92h1.286a.346.346 0 0 0 .242-.098.345.345 0 0 0 .005-.488l-1.533-1.567v-2.47a.288.288 0 0 0-.287-.289h-1.197a.288.288 0 0 0-.287.288v.673L16.357 7.65a.43.43 0 0 0-.31-.128Zm.003 3.876a.591.591 0 0 0 0 1.182.59.59 0 0 0 .59-.59.59.59 0 0 0-.59-.592zm-2.99 2.992a.59.59 0 0 0-.59.59.591.591 0 1 0 1.18 0 .59.59 0 0 0-.59-.59zm5.979 0a.591.591 0 1 0 .59.59.59.59 0 0 0-.59-.59z"/><g
+                                                         style="stroke-width:.3;stroke:#fff"><path
+                                                             d="m31.903 15.27.048.872q0 .072-.012.263 0 .191-.143.347-.132.143-.335.143-.192 0-.3-.012-.394 0-.394-.347 0-.287.263-2.307.263-2.032.335-2.618l.12-.98q.06-.407.083-.598.024-.192.072-.383.048-.191.144-.31.179-.228.693-.228.86.43 1.77 2.44.645 1.434.86 1.816.215.383.419.526l2.39-4.16q.252-.18.383-.18.383 0 .586.347.203.347.335.85.143.49.239 1.087.107.598.18 1.255.083.646.155 1.268.167 1.494.25 1.876.096.383.096.55 0 .156-.107.311-.108.144-.3.144-.19 0-.382-.144-.191-.155-.239-.37-.036-.227-.084-.586-.035-.359-.095-.801-.06-.454-.12-.945-.06-.502-.12-.956l-.107-.801-.072-.538q0-.24-.012-.442-.012-.204-.095-.251-.084-.048-.263.12-.168.155-.478.645-.67 1.04-1.937 3.503-.168.298-.443.131-.322-.18-.55-.92l-2.2-4.675q-.286.574-.525 3.802-.036.394-.048.67-.06.298-.06.585zM44.007 21.773q-.251.562-.598.562-.168 0-.251-.156-.072-.143 0-.346.263-1.112.753-2.535.502-1.423.67-1.913-.419-.418-1.316-1.674-1.84-2.582-1.84-2.833 0-.012.011-.024l.455-.454q.944.873 2.462 2.965.383.526.61.884.251-.502.395-.86l.227-.586.25-.598q.407-.992 1.125-2.522.107-.048.227-.048.299 0 .43.155.048.06.048.144 0 .071-.024.143zM31.14 18.797h10.006c.28 0 .57.055.57.357s-.29.735-.57.733l-9.962-.094c-.28-.003-.396-.15-.396-.451 0-.302.073-.545.353-.545z"/></g><text
+                                                         x="1047.5" y="175" font-weight="bold" textLength="745"
+                                                         transform="scale(.1)">ANALYTICS</text></g></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="201" height="28"
+                                             aria-label="MY: STATE DEV TOOLS" style="border-radius:4px"><g
+                                                    shape-rendering="crispEdges"><path fill="#555" d="M0 0h55.5v28H0z"/><path
+                                                        fill="#03a9f4" d="M55.5 0H201v28H55.5z"/></g><g fill="#fff"
+                                                                                                        font-family="Verdana,Geneva,DejaVu Sans,sans-serif"
+                                                                                                        font-size="100"
+                                                                                                        text-anchor="middle"
+                                                                                                        text-rendering="geometricPrecision"><path
+                                                        d="M16.047 7.523a.429.429 0 0 0-.303.129l-6.905 7.002a.343.343 0 0 0-.099.241.345.345 0 0 0 .346.345h1.281v4.92c0 .159.128.287.287.287h4.842v-2.245l-1.859-1.86a1.474 1.474 0 0 1-.577.117 1.477 1.477 0 0 1 0-2.955 1.476 1.476 0 0 1 1.36 2.054l1.076 1.077V13.36a1.478 1.478 0 0 1 .554-2.847 1.477 1.477 0 0 1 .553 2.847v3.275l1.076-1.077a1.475 1.475 0 0 1-.117-.577 1.477 1.477 0 1 1 1.477 1.478 1.474 1.474 0 0 1-.577-.118l-1.86 1.862v2.244h4.843a.286.286 0 0 0 .287-.287v-4.92h1.286a.346.346 0 0 0 .242-.098.345.345 0 0 0 .005-.488l-1.533-1.567v-2.47a.288.288 0 0 0-.287-.289h-1.197a.288.288 0 0 0-.287.288v.673L16.357 7.65a.43.43 0 0 0-.31-.128Zm.003 3.876a.591.591 0 0 0 0 1.182.59.59 0 0 0 .59-.59.59.59 0 0 0-.59-.592zm-2.99 2.992a.59.59 0 0 0-.59.59.591.591 0 1 0 1.18 0 .59.59 0 0 0-.59-.59zm5.979 0a.591.591 0 1 0 .59.59.59.59 0 0 0-.59-.59z"/><g
+                                                        style="stroke-width:.3;stroke:#fff"><path
+                                                            d="m31.903 15.27.048.872q0 .072-.012.263 0 .191-.143.347-.132.143-.335.143-.192 0-.3-.012-.394 0-.394-.347 0-.287.263-2.307.263-2.032.335-2.618l.12-.98q.06-.407.083-.598.024-.192.072-.383.048-.191.144-.31.179-.228.693-.228.86.43 1.77 2.44.645 1.434.86 1.816.215.383.419.526l2.39-4.16q.252-.18.383-.18.383 0 .586.347.203.347.335.85.143.49.239 1.087.107.598.18 1.255.083.646.155 1.268.167 1.494.25 1.876.096.383.096.55 0 .156-.107.311-.108.144-.3.144-.19 0-.382-.144-.191-.155-.239-.37-.036-.227-.084-.586-.035-.359-.095-.801-.06-.454-.12-.945-.06-.502-.12-.956l-.107-.801-.072-.538q0-.24-.012-.442-.012-.204-.095-.251-.084-.048-.263.12-.168.155-.478.645-.67 1.04-1.937 3.503-.168.298-.443.131-.322-.18-.55-.92l-2.2-4.675q-.286.574-.525 3.802-.036.394-.048.67-.06.298-.06.585zM44.007 21.773q-.251.562-.598.562-.168 0-.251-.156-.072-.143 0-.346.263-1.112.753-2.535.502-1.423.67-1.913-.419-.418-1.316-1.674-1.84-2.582-1.84-2.833 0-.012.011-.024l.455-.454q.944.873 2.462 2.965.383.526.61.884.251-.502.395-.86l.227-.586.25-.598q.407-.992 1.125-2.522.107-.048.227-.048.299 0 .43.155.048.06.048.144 0 .071-.024.143zM31.14 18.797h10.006c.28 0 .57.055.57.357s-.29.735-.57.733l-9.962-.094c-.28-.003-.396-.15-.396-.451 0-.302.073-.545.353-.545z"/></g><text
+                                                        x="1282.5" y="175" font-weight="bold" textLength="1215"
+                                                        transform="scale(.1)">STATE DEV TOOLS</text></g></svg>
+                                    </span>
+                                </p>
+                                <div class="flex items-center justify-center w-full">
+                                    <label for="dropzone-file"
+                                           class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                            <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none"
+                                                 stroke="currentColor" viewBox="0 0 24 24"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                            </svg>
+                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                                                        class="font-semibold">Click to upload</span> or drag and drop
+                                            </p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
+                                                (MAX.
+                                                800x400px)</p>
+                                        </div>
+                                        <input id="dropzone-file" name="dropzone-file" type="file" class="hidden"/>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                <div>
+                    <button type="submit"
+                            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Build
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div id="modal"
+             class="fixed margin-auto inset-0 flex items-center justify-center z-10 hidden scale-0 opacity-0 transition-transform transition-opacity transform">
+            <div class="bg-white p-6 rounded-lg shadow-xl dark:bg-gray-900 z-40 w-9/12">
+
+                <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">Preview:</h4>
+                <div class="mb-3" id="previewResponse">
+
+                </div>
+                <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">RAW:</h4>
+                <div id="rawResponse" rel="noopener noreferrer"
+                     class="text-blue-500 font-bold underline mb-3"></div>
+
+                <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">HTML:</h4>
+                <code id="htmlResponse"
+                      class="break-words p-4 whitespace-normal block bg-gray-200 dark:bg-gray-700 mb-3 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                    HTML
+                </code>
+                <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">MARKDOWN:</h4>
+                <code id="markdownResponse"
+                      class="block p-4 break-words whitespace-normal bg-gray-200 dark:bg-gray-700 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                    Markdown
+                </code>
+                <button type="submit" id="doneButton"
+                        class=" mt-4 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                    Close
+                </button>
+            </div>
+            <div id="overlay" class="fixed inset-0 transition-opacity bg-black bg-opacity-50 hidden">
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}

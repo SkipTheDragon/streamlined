@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Build Your Link {% endblock %}
+        - {{ streamlined_config("streamlined_bundle.streamlined").app.name }}</title>
+    <link rel="icon"
+          href="{{ streamlined_config("streamlined_bundle.streamlined").app.favicon ?? "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>" }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="WYVERR | Tudorache Leonard Valentin"> <!-- Please don't delete :) -->
+
+    <meta name="title" content="{% block title1 %} Build Your Link {% endblock %} - {{ streamlined_config("streamlined_bundle.streamlined").app.name }}" />
+    <meta name="description" content="{{ streamlined_config('streamlined_bundle.streamlined').app.description }}" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ app.request.requestUri }}" />
+    <meta property="og:title" content="{% block title2 %} Build Your Link {% endblock %} - {{ streamlined_config("streamlined_bundle.streamlined").app.name }}" />
+    <meta property="og:description" content="{{ streamlined_config('streamlined_bundle.streamlined').app.description }}"  />
+    <meta property="og:image" content="{{ asset("./bundles/streamlined/images/logo.webp") }}" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ app.request.requestUri }}" />
+    <meta property="twitter:title" content="{% block title3 %} Build Your Link {% endblock %} - {{ streamlined_config("streamlined_bundle.streamlined").app.name }}" />
+    <meta property="twitter:description" content="{{ streamlined_config('streamlined_bundle.streamlined').app.description }}" />
+    <meta property="twitter:image" content="{{ asset("./bundles/streamlined/images/logo.webp") }}" />
+
+    <!-- Meta Tags Generated with https://metatags.io -->
+
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% set manifestFile = 'entrypoints.json' %}
+    {% set manifestPath = 'bundles/streamlined/' ~ manifestFile %}
+    <script type="text/javascript">
+        const routeToProcessForm = "{{ path('process_form')|escape('js') }}";
+    </script>
+    {% if file_exists(manifestPath) %}
+        {% set manifest = json_decode(file_get_contents(manifestPath), true) %}
+
+        {% if manifest.entrypoints.app is defined %}
+            {# Include CSS stylesheets #}
+            {% for cssAsset in manifest.entrypoints.app.css %}
+        <link rel="stylesheet" href="{{ asset(cssAsset) }}">
+            {% endfor %}
+
+            {# Include JavaScript files #}
+            {% for jsAsset in manifest.entrypoints.app.js %}
+            <script src="{{ asset(jsAsset) }}" type="text/javascript"></script>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+
+</head>
+<body class="">
+{% block body %}{% endblock %}
+{% block cookie %}
+    <div class="wrapper">
+        <header>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#111827"
+                 class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+            </svg>
+            <span class="text-gray-900">Cookies Consent</span>
+        </header>
+
+        <div class="data">
+            <p>This website use cookies to help you have a superior and more relevant browsing experience on the
+                website.</p>
+        </div>
+
+        <div class="buttons">
+            <button class="button" id="acceptBtn">Accept</button>
+            <button class="button" id="declineBtn">Decline</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% if streamlined_config("streamlined_bundle.streamlined").app.allow_dark_mode %}
+        <button id="darkModeToggle"
+                class="fixed left-3 bottom-0 ml-3 mb-3 p-4 bg-gray-800 text-white rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
+            </svg>
+        </button>
+    {% endif %}
+
+    <div class="bg-linear-pink-invert py-12 px-4  dark:bg-gray-700">
+        <div tabindex="0" aria-label="footer"
+             class="focus:outline-none mx-auto container flex flex-col items-center justify-center">
+            <div tabindex="0" aria-label="prodify logo" role="img">
+                <img width="79" src="{{ asset("./bundles/streamlined/images/logo.webp") }}"
+                     alt="logo">
+            </div>
+            <div class="text-black flex flex-col md:items-center f-f-l pt-3">
+                <h1 tabindex="0"
+                    class="focus:outline-none dark:text-white text-2xl font-black">{{ streamlined_config("streamlined_bundle.streamlined").app.motto }}</h1>
+                <div class="md:flex items-center mt-5 md:mt-10 text-base text-color f-f-l">
+                    <h2 class=" md:mr-6 pb-4 md:py-0 cursor-pointer">
+                        <a class="focus:outline-none dark:text-white focus:underline hover:text-gray-700"
+                           href="{{ streamlined_config("streamlined_bundle.streamlined").links.user_website }}"
+                        >Our Website</a>
+                    </h2>
+                    <h2 class="cursor-pointer">
+                        <a class="focus:outline-none dark:text-white focus:underline hover:text-gray-700"
+                           href="{{ streamlined_config("streamlined_bundle.streamlined").links.overridable.tos ?? url('app_tos') }}">Terms
+                            And Conditions </a>
+                    </h2>
+                </div>
+                <div class="my-6 text-base text-color f-f-l">
+                    <ul class="md:flex items-center">
+                        <li class="md:mr-6 cursor-pointer pt-4 lg:py-0"><a href="{{ url('app_manage_instances') }}"
+                                                                           class="focus:outline-none dark:text-white  focus:underline hover:text-gray-500">Manage
+                                My Instances</a>
+                        </li>
+                        <li class="md:mr-6 cursor-pointer pt-4 lg:py-0"><a href="{{ url('app_create_link') }}"
+                                                                           class="focus:outline-none dark:text-white  focus:underline hover:text-gray-500">Create link</a>
+                        </li>
+                        <li class="md:mr-6 cursor-pointer pt-4 lg:py-0"><a
+                                    href="{{ streamlined_config("streamlined_bundle.streamlined").links.overridable.faq ?? url('app_faq') }}"
+                                    class="focus:outline-none dark:text-white  focus:underline hover:text-gray-500">F.A.Q </a>
+                        </li>
+                        <li class="cursor-pointer pt-4 lg:py-0"><a
+                                    href="{{ streamlined_config("streamlined_bundle.streamlined").links.overridable.privacy ?? url('app_privacy') }}"
+                                    class="focus:outline-none focus:underline dark:text-white hover:text-gray-500">Privacy
+                                Policy </a></li>
+                    </ul>
+                </div>
+                <div class="text-sm text-color mb-10 f-f-l">
+                    <p tabindex="0" class="dark:text-white focus:outline-none">© {{ 'now' | date('Y') }}
+                        {{ streamlined_config("streamlined_bundle.streamlined").app.name }}. All rights
+                        reserved</p>
+                </div>
+            </div>
+            <div class="w-9/12 h-0.5 bg-gray-100 dark:bg-gray-700 rounded-full"></div>
+            <div class="flex justify-between items-center pt-12">
+                {% if  streamlined_config("streamlined_bundle.streamlined").links.downloads.ios is defined %}
+                    <a href="{{ streamlined_config("streamlined_bundle.streamlined").links.downloads.ios }}" target="_blank">
+                        <button
+                                class="hover:shadow-lg mr-4 focus:outline-none rounded-md focus:ring-2 focus:ring-offset-2 focus:ring-gray-600"
+                                aria-label="download on the app store">
+                            <div class="">
+                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_center_aligned_with_logo-svg2.svg"
+                                     alt="download on the app store">
+                            </div>
+                        </button>
+                    </a>
+                {% endif %}
+                {% if  streamlined_config("streamlined_bundle.streamlined").links.downloads.android is defined %}
+                    <a href="{{ streamlined_config("streamlined_bundle.streamlined").links.downloads.android }}" target="_blank">
+                        <button class="hover:shadow-lg focus:outline-none rounded-md focus:ring-2 focus:ring-offset-2 focus:ring-gray-600"
+                                aria-label="get it on google play">
+                            <div>
+                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_center_aligned_with_logo-svg3.svg"
+                                     alt="get it on google play">
+                            </div>
+                        </button>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+</body>
+</html>
