@@ -46,10 +46,14 @@ class Builder extends AbstractController
         }
 
         $html = $this->generateSVG(
-            isset($currentApp["icon"]) ? $this->processImage($currentApp["icon"]) : '<svg  width="20px" height="20px" x="12px" y="5px"></svg>',
+            $this->processImage($currentApp["icon"]),
             $label,
+            $config["svg"]["iconBackgroundColor"],
             $config["svg"]["textBackgroundColor"],
-            $config["svg"]["iconBackgroundColor"]
+            [
+                $config["svg"]["customWidth"],
+                $config["svg"]["customHeight"]
+            ]
         );
 
         return new Response($html, 200, [
@@ -125,7 +129,13 @@ class Builder extends AbstractController
         if (preg_match('/^(https?:\/\/[^\s]+)/i', $input, $matches)) {
             $link = $matches[0];
             // Return the link as HTML
-            return '<a href="' . $link . '">' . $link . '</a>';
+            return '<img src="' . $link . '"/>';
+        }
+
+        // if the input is a filesystem path:
+        if (preg_match('/^([a-z]:)?[\/\\\\]/i', $input)) {
+            // Return the path as HTML
+            return file_get_contents($input);
         }
 
         // Check if the input is an SVG
@@ -170,7 +180,7 @@ class Builder extends AbstractController
      * @param string $secondBgColor
      * @return string xml string
      */
-    private function generateSVG(string $iconSVG, string $text, string $firstBgColor, string $secondBgColor): string
+    private function generateSVG(string $iconSVG, string $text, string $firstBgColor, string $secondBgColor, array $customIconDimensions = [50,50]): string
     {
         $iconWidth = 0.3 * 154;  // 30% of the image width
         $iconHeight = 28;
@@ -198,8 +208,26 @@ class Builder extends AbstractController
         if ($iconSvg !== null) {
             $iconDoc = $iconSvg->getDocument();
             // Calculate the position to center the icon inside the first rectangle
-            $iconX = ($iconWidth - $this->extractNumericValue($iconDoc->getWidth())) / 2;
-            $iconY = ($iconHeight - $this->extractNumericValue($iconDoc->getHeight())) / 2;
+            $width = $iconDoc->getWidth();
+            $height = $iconDoc->getHeight();
+
+            // In case width or height is not set, use the default icon dimensions
+            if ($width === null) {
+                $width = $customIconDimensions[0];
+            }
+
+            if ($height === null) {
+                $height = $customIconDimensions[1];
+            }
+
+            // In case the icon dimensions are different from the default ones, use them.
+            if ($customIconDimensions[0] !== 50 || $customIconDimensions[1] !== 50) {
+                $width = $customIconDimensions[0];
+                $height = $customIconDimensions[1];
+            }
+
+            $iconX = ($iconWidth - $this->extractNumericValue($width)) / 2;
+            $iconY = ($iconHeight - $this->extractNumericValue($height)) / 2;
 
             $iconSvg->getDocument()->setAttribute('x', $iconX);
             $iconSvg->getDocument()->setAttribute('y', $iconY);

@@ -144,7 +144,8 @@
                                     <span class="flex mt-2">
                                          <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="154" height="28"
                                               aria-label="MY: ANALYTICS" style="border-radius:4px"><g
-                                                     shape-rendering="crispEdges"><path fill="#555" d="M0 0h55.5v28H0z"/><path
+                                                     shape-rendering="crispEdges"><path fill="#555"
+                                                                                        d="M0 0h55.5v28H0z"/><path
                                                          fill="#03a9f4" d="M55.5 0H154v28H55.5z"/></g><g fill="#fff"
                                                                                                          font-family="Verdana,Geneva,DejaVu Sans,sans-serif"
                                                                                                          font-size="100"
@@ -206,31 +207,73 @@
         </div>
 
         <div id="modal"
-             class="fixed margin-auto inset-0 flex items-center justify-center z-10 hidden scale-0 opacity-0 transition-transform transition-opacity transform">
-            <div class="bg-white p-6 rounded-lg shadow-xl dark:bg-gray-900 z-40 w-9/12">
-
-                <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">Preview:</h4>
-                <div class="mb-3" id="previewResponse">
-
+             class="fixed margin-auto inset-0 flex items-center justify-center z-10
+             hidden scale-0 opacity-0 transition-transform transition-opacity transform
+">
+            <div class="bg-white p-6 rounded-lg shadow-xl dark:bg-gray-900 z-40 sm:w-6/12 w-full">
+                <div class="mb-6 flex items-center justify-start">
+                    <div class="mr-6 w-fit rounded-lg p-2 bg-green-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                             class="w-auto mx-auto h-12 ">
+                            <path fill-rule="evenodd"
+                                  d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z"
+                                  clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">
+                            Done!
+                        </h2>
+                        <p class="text-sm mt-1 text-gray-500 dark:text-gray-400  ">
+                            Just copy and paste the code below based on your needs.
+                        </p>
+                    </div>
                 </div>
-                <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">RAW:</h4>
-                <div id="rawResponse" rel="noopener noreferrer"
-                     class="text-blue-500 font-bold underline mb-3"></div>
+
+                <div class="flex  items-center">
+                    <div class="mr-6">
+                        <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">Preview:</h4>
+                        <div id="previewResponse">
+
+                        </div>
+                    </div>
+                    <div class="hidden">
+                        <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">RAW:</h4>
+                        <div id="rawResponse" rel="noopener noreferrer"
+                             class="text-blue-500 font-bold underline "></div>
+                    </div>
+                </div>
 
                 <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">HTML:</h4>
-                <code id="htmlResponse"
-                      class="break-words p-4 whitespace-normal block bg-gray-200 dark:bg-gray-700 mb-3 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                    HTML
-                </code>
+                <div class="block bg-gray-200 p-4 rounded relative dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-100">
+                    <button data-content="htmlResponse"
+                            class="copy-code-button absolute right-0 -top-6 h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
+                        Copy Code
+                    </button>
+                    <code id="htmlResponse"
+                          class="break-words p-4 whitespace-normal">
+                        HTML
+                    </code>
+                </div>
+
                 <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">MARKDOWN:</h4>
-                <code id="markdownResponse"
-                      class="block p-4 break-words whitespace-normal bg-gray-200 dark:bg-gray-700 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                    Markdown
-                </code>
-                <button type="submit" id="doneButton"
-                        class=" mt-4 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                    Close
-                </button>
+                <div class="block bg-gray-200 p-4 rounded relative dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-100">
+                    <button data-content="markdownResponse"
+                            class="copy-code-button absolute right-0 -top-6 h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
+                        Copy Code
+                    </button>
+                    <code id="markdownResponse"
+                          class="break-words p-4 whitespace-normal">
+                        Markdown
+                    </code>
+                </div>
+
+                <div class="flex justify-end">
+                    <button type="submit" id="doneButton"
+                            class="mt-6 group relative text-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        Close Popup
+                    </button>
+                </div>
             </div>
             <div id="overlay" class="fixed inset-0 transition-opacity bg-black bg-opacity-50 hidden">
             </div>

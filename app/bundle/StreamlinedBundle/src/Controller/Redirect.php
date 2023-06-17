@@ -28,7 +28,7 @@ class Redirect extends AbstractController
 
         //if cookie is set redirect instant else  render the app.
         return $this->render('@StreamlinedBundle/app_redirect_link.twig', [
-            'app' => $app,
+            '_app' => $app,
             'cookie' => $cookieToCheck,
             'show_link' => ($isEncoded && str_contains($pointer, "streamlined-unique-show-url=true")) || !$isEncoded,
             'pointer' => $pointer =  str_replace("streamlined-unique-show-url=true", "", $pointer),

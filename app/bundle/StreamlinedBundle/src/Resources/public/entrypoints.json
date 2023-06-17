@@ -2,12 +2,12 @@
   "entrypoints": {
     "app": {
       "js": [
-        "bundles/streamlined/runtime.abfcd617.js",
-        "bundles/streamlined/vendors-node_modules_core-js_modules_es_array_for-each_js-node_modules_core-js_modules_es_arr-b17908.99808cca.js",
-        "bundles/streamlined/app.1fc2e4ee.js"
+        "bundles/streamlined/runtime.c0b9c89c.js",
+        "bundles/streamlined/785.05627043.js",
+        "bundles/streamlined/app.b9934c03.js"
       ],
       "css": [
-        "bundles/streamlined/app.c04db861.css"
+        "bundles/streamlined/app.0a27a71b.css"
       ]
     }
   }

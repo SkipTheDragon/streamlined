@@ -8,6 +8,8 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 /**
  * Features:
  * Dark Mode
+ * Fully Responsive
+ * Thoroughly Tested
  * Modern Design
  * Fast and Lightweight
  * Can Be used as a bundle in any Symfony Project
@@ -33,9 +35,7 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
  * FAQ/Privacy Policy/Terms of Service pages
  * SEO Ready
  * Todo:
- * Handle file uploads
- * Modal design improvement + Copy to clipboard buttons
- * Get logo from config
+ * Docs
  */
 class StreamlinedBundle extends AbstractBundle
 {

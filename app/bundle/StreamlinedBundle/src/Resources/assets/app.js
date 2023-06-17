@@ -15,4 +15,5 @@ import './form.js';
 import './saveWebsiteToCookie.js';
 import './deleteWebsiteFromCookies.js';
 import './countdown.js';
+import './copyCode.js';
 import 'flowbite';

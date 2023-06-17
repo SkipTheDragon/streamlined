@@ -18,18 +18,11 @@ streamlined_bundle:
 #      tos: "https://www.example.com/terms"
   app:
     name: "WYVERR"
-    motto: "Envision. Create. Inspire."
     description: "Your description (used for seo)."
-    logo: "https://www.example.com/logo.png"
-#    favicon: "https://www.example.com/favicon.png"
     allow_dark_mode: true
     disable_destination_obfuscation: false
     always_instant_redirect: false
-#    allow_uploads: true
   svg:
-    iconBackgroundColor: "#000000"
-    textBackgroundColor: "#ffffff"
-    textColor: "#ffffff"
   apps:
     wordpress:
       name: "WordPress"
