@@ -34,7 +34,7 @@ pipelines:
     - step:
         <<: *deployment
         name: Deploy Docs to Prod
-        image: node:current-buster
+        image: node:18.16-bullseye
         script:
           - source .envs
           - apt-get update && apt-get install -y openssh-client rsync
