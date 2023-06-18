@@ -11,4 +11,4 @@ pipelines:
           - chmod 600 ~/.ssh/id_rsa
           - ssh-keyscan $SERVER_IP >> ~/.ssh/known_hosts
           - rsync -r --delete-after --quiet $BITBUCKET_CLONE_DIR/app/ $SERVER_USERNAME@$SERVER_IP:/home/demo.wyverr.com/streamlined.demo.wyverr.com/
-          - ssh $SERVER_USERNAME@$SERVER_IP 'cd /home/demo.wyverr.com/streamlined.demo.wyverr.com/ && composer install --no-dev --optimize-autoloader'
+          - ssh $SERVER_USERNAME@$SERVER_IP 'cd /home/demo.wyverr.com/streamlined.demo.wyverr.com/ && composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction'
