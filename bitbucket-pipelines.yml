@@ -8,6 +8,9 @@ pipelines:
         script:
           - apt-get update && apt-get install -y openssh-client
           - echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
+          - cat ~/.ssh/id_rsa
+          - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          - cat ~/.ssh/id_rsa
           - chmod 600 ~/.ssh/id_rsa
           - ssh-keyscan $SERVER_IP >> ~/.ssh/known_hosts
           - scp -r $BITBUCKET_CLONE_DIR/* $SERVER_USERNAME@$SERVER_IP:/home/demo.wyverr.com/streamlined.demo.wyverr.com/
