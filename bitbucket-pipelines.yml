@@ -42,4 +42,4 @@ pipelines:
           - chmod 600 ~/.ssh/id_rsa
           - ssh-keyscan $SERVER_IP >> ~/.ssh/known_hosts
           - cd $BITBUCKET_CLONE_DIR/app/bundle/StreamlinedBundle/src/Resources/docs && npm i && npm install -D tailwindcss@latest postcss@latest autoprefixer@latest && npm run build
-          - rsync -r --delete-after --quiet $BITBUCKET_CLONE_DIR/app/bundle/StreamlinedBundle/src/Resources/docs/build $SERVER_USERNAME@$SERVER_IP:/home/docs.wyverr.com/streamlined.docs.wyverr.com/
+          - rsync -r --delete-after --quiet $BITBUCKET_CLONE_DIR/app/bundle/StreamlinedBundle/src/Resources/docs/build/ $SERVER_USERNAME@$SERVER_IP:/home/docs.wyverr.com/streamlined.docs.wyverr.com/
