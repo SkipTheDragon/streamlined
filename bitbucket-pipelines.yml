@@ -4,7 +4,6 @@ pipelines:
   default:
     - step:
         name: Deploy Demo to Prod
-        deployment: production
         script:
           - apt-get update && apt-get install -y openssh-client rsync
           - echo $SSH_PRIVATE_KEY | base64 --decode > ~/.ssh/id_rsa
@@ -15,7 +14,6 @@ pipelines:
     - step:
         name: Deploy Docs to Prod
         image: node:18.16.0-alpine3.18
-        deployment: production
         script:
           - echo $SSH_PRIVATE_KEY | base64 --decode > ~/.ssh/id_rsa
           - chmod 600 ~/.ssh/id_rsa
