@@ -48,11 +48,11 @@ class Builder extends AbstractController
         $html = $this->generateSVG(
             $this->processImage($currentApp["icon"]),
             $label,
-            $config["svg"]["iconBackgroundColor"],
-            $config["svg"]["textBackgroundColor"],
+            $config["svg"]["icon_background_color"],
+            $config["svg"]["text_background_color"],
             [
-                $config["svg"]["customWidth"],
-                $config["svg"]["customHeight"]
+                $currentApp["custom_icon_width"],
+                $currentApp["custom_icon_height"]
             ]
         );
 

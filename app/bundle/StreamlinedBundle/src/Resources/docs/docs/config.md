@@ -1,8 +1,20 @@
+---
+sidebar_position: 6
+---
+
+# Configuration
+
+Editing the configuration file `streamlined_bundle.yaml` located inside the `config/packages` directory allows you to customize the platform to your liking.  In case it doesn't exist please create it.
+
+In the below configuration we will showcase and describe the configuration of the application/bundle with all available options.
+
+
+```yaml
 streamlined_bundle:
   links:
     user_website: "https://www.wyverr.com" # the link to your main website
     downloads: # will display the icons in footer if set
-      android: "https://play.google.com/store/apps/details?id=com.example"
+      android: "https://play.google.com/store/apps/details?id=com.example" 
       ios: "https://apps.apple.com/us/app/example/id1234567890"
     overridable: # in case you have external faq/privacy/tos pages, or you don't want to use the default templates.
       faq: "https://www.example.com/faq" # default is empty
@@ -32,3 +44,6 @@ streamlined_bundle:
       icon: "%kernel.project_dir%/public/bundles/streamlined/images/defaulticon.svg" # show a custom icon for the app
       custom_icon_width: 50 # leave this value to 50 to use automatically detected size
       custom_icon_height: 50 # leave this value to 50 to use automatically detected size
+```
+
+All values are the default ones, unless specified otherwise. You can change them to your liking :) .

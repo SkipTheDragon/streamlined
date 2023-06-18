@@ -27,8 +27,8 @@ streamlined_bundle:
     always_instant_redirect: false
   #    allow_uploads: true
   svg:
-    iconBackgroundColor: "#000000"
-    textBackgroundColor: "#ffffff"
+    icon_background_color: "#000000"
+    text_background_color: "#ffffff"
     textColor: "#ffffff"
   apps:
     wordpress:
