@@ -1,15 +1,14 @@
-image: php:7.4
+image: php:8.1
 
 pipelines:
   default:
     - step:
-        name: Deploy to CyberPanel
+        name: Deploy Demo to Prod
         deployment: production
         script:
-          - apt-get update && apt-get install -y openssh-client
+          - apt-get update && apt-get install -y openssh-client rsync
           - echo $SSH_PRIVATE_KEY | base64 --decode > ~/.ssh/id_rsa
-          - cat ~/.ssh/id_rsa
           - chmod 600 ~/.ssh/id_rsa
           - ssh-keyscan $SERVER_IP >> ~/.ssh/known_hosts
-          - scp -r $BITBUCKET_CLONE_DIR/* $SERVER_USERNAME@$SERVER_IP:/home/demo.wyverr.com/streamlined.demo.wyverr.com/
+          - rsync -r --delete-after --quiet $BITBUCKET_CLONE_DIR/app/ $SERVER_USERNAME@$SERVER_IP:/home/demo.wyverr.com/streamlined.demo.wyverr.com/
           - ssh $SERVER_USERNAME@$SERVER_IP 'cd /home/demo.wyverr.com/streamlined.demo.wyverr.com/ && composer install --no-dev --optimize-autoloader'
