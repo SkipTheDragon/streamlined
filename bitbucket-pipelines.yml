@@ -37,7 +37,7 @@ pipelines:
         image: node:18.16.0-alpine3.18
         script:
           - source .envs
-          - echo $SSH_PRIVATE_KEY | base64 --decode > ~/.ssh/id_rsa
+          - echo $SSH_PRIVATE_KEY | base64 -d > ~/.ssh/id_rsa
           - chmod 600 ~/.ssh/id_rsa
           - ssh-keyscan $SERVER_IP >> ~/.ssh/known_hosts
           - rsync -r --delete-after --quiet $BITBUCKET_CLONE_DIR/app/bundle/StreamlinedBundle/src/Resources/docs $SERVER_USERNAME@$SERVER_IP:/home/docs.wyverr.com/streamlined.docs.wyverr.com/
