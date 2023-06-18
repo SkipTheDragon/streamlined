@@ -24,6 +24,7 @@ pipelines:
         <<: *deployment
         name: Deploy Demo to Prod
         script:
+          - source .envs
           - apt-get update && apt-get install -y openssh-client rsync
           - echo $SSH_PRIVATE_KEY | base64 --decode > ~/.ssh/id_rsa
           - chmod 600 ~/.ssh/id_rsa
@@ -35,6 +36,7 @@ pipelines:
         name: Deploy Docs to Prod
         image: node:18.16.0-alpine3.18
         script:
+          - source .envs
           - echo $SSH_PRIVATE_KEY | base64 --decode > ~/.ssh/id_rsa
           - chmod 600 ~/.ssh/id_rsa
           - ssh-keyscan $SERVER_IP >> ~/.ssh/known_hosts
