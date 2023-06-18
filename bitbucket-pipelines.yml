@@ -1,8 +1,27 @@
 image: php:8.1
 
+definitions: 
+  steps:
+    - step: &save-envs
+        name: "Save env variables"
+        script:
+          - echo "export SERVER_IP=$SERVER_IP"   >  .envs
+          - echo "export SERVER_USERNAME=$SERVER_USERNAME"  >>  .envs
+          - echo "export SSH_PRIVATE_KEY=$SSH_PRIVATE_KEY"      >>  .envs
+        artifacts:
+          - .envs
+    - step: &deployment
+        script:
+          - source .envs
+          
 pipelines:
+
   default:
     - step:
+        <<: *save-envs
+        deployment: production
+    - step:
+        <<: *deployment
         name: Deploy Demo to Prod
         script:
           - apt-get update && apt-get install -y openssh-client rsync
@@ -12,6 +31,7 @@ pipelines:
           - rsync -r --delete-after --quiet $BITBUCKET_CLONE_DIR/app/ $SERVER_USERNAME@$SERVER_IP:/home/demo.wyverr.com/streamlined.demo.wyverr.com/
           - ssh $SERVER_USERNAME@$SERVER_IP 'cd /home/demo.wyverr.com/streamlined.demo.wyverr.com/ && APP_ENV=prod composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction'
     - step:
+        <<: *deployment
         name: Deploy Docs to Prod
         image: node:18.16.0-alpine3.18
         script:
