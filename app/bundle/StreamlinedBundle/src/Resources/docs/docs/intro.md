@@ -55,4 +55,4 @@ In case you are stuck, you should check these pages, so you can get back on trac
 - [Roadmap](https://streamlined.roadmap.wyverr.com) - A list of all the features that we plan to add to this product.
 
 
-P.S. In case that the [FAQ](faq) and [Roadmap](roadmap) pages are empty, don't worry, we just don't have enough user data to build them, but we will get there very soon!
+P.S. In case that the [FAQ](faq) and [Roadmap](https://streamlined.roadmap.wyverr.com) pages are empty, don't worry, we just don't have enough user data to build them, but we will get there very soon!

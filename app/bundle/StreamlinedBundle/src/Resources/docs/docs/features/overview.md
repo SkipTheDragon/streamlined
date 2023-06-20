@@ -12,8 +12,6 @@ Here is an overview (in form of a list) of all the features that Streamlined off
 
 - **Thoroughly Tested**: Rigorous testing guarantees the platform's reliability and functionality, ensuring it performs optimally under different conditions and scenarios.
 
-- **Modern Design**: The platform sports a contemporary aesthetic, providing a visually pleasing interface that enhances user engagement and experience.
-
 - **Fast and Lightweight**: Designed for efficiency, the platform operates at high speeds without hogging system resources, providing a smooth and responsive user experience.
 
 - **Use as a Bundle in any Symfony Project**: The platform can be integrated as a bundle into any Symfony project, offering flexibility and convenience to Symfony developers.
