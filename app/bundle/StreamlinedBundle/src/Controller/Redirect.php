@@ -34,19 +34,22 @@ class Redirect extends AbstractController
             'pointer' => $pointer =  str_replace("streamlined-unique-show-url=true", "", $pointer),
             'cookie_already_set' => isset($_COOKIE[$cookieToCheck]) && filter_var($_COOKIE[$cookieToCheck], FILTER_VALIDATE_URL) !== false,
             'user_instance' => isset($_COOKIE[$cookieToCheck]) && filter_var($_COOKIE[$cookieToCheck], FILTER_VALIDATE_URL) !== false ? $_COOKIE[$cookieToCheck] : null,
-            'url' => isset($_COOKIE[$cookieToCheck]) && filter_var($_COOKIE[$cookieToCheck], FILTER_VALIDATE_URL) !== false ? trim($_COOKIE[$cookieToCheck], "/"). "/" . $this->decodeBase64($pointer) : "",
+            'url' => isset($_COOKIE[$cookieToCheck])
+            && filter_var($_COOKIE[$cookieToCheck], FILTER_VALIDATE_URL) !== false
+                ? trim($_COOKIE[$cookieToCheck], "/"). "/" . $this->decodeBase64($pointer) :
+                false,
         ]);
     }
 
     #[Route('/instant-pointing-to/{app}/{pointer}', name: 'app_redirect_user_instant')]
-    public function instantPointingTo(string $app, string $pointer): Response
+    public function instantPointingTo(string $app, string $pointer, #[Autowire(service: "service_container")] ContainerInterface $container): Response
     {
         //if cookie is set and is a valid url redirect instant else render the app.
         if (isset($_COOKIE[$app]) && filter_var($_COOKIE[$app], FILTER_VALIDATE_URL) !== false) {
             return $this->redirect(trim($_COOKIE[$app], "/"). "/" . $this->decodeBase64($pointer));
         }
 
-        return $this->pointingTo($app, $pointer);
+        return $this->pointingTo($app, $pointer, $container);
     }
 
     public function isBase64Encoded(string $string): bool

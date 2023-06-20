@@ -184,7 +184,10 @@ class Builder extends AbstractController
     {
         $iconWidth = 0.3 * 154;  // 30% of the image width
         $iconHeight = 28;
-        $textWidth = strlen($text) * 10; // Assuming each character occupies 10 units of width
+        $textWidth = strlen($text) * 6; // Assuming each character occupies 10 units of width
+
+        if ($textWidth < 100) $textWidth = 90; // Minimum width of 100 units (pixels
+
         $svgWidth = $textWidth * 1.8; // Increase SVG width by 30% of text width
         $svgHeight = 28;
 

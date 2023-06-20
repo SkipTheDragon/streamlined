@@ -19,15 +19,24 @@
                 </h2>
             </div>
             <ul class="list-none space-y-3">
-                {% for key,app in streamlined_config("streamlined_bundle.streamlined").apps %}
+                {% for key,_app in streamlined_config("streamlined_bundle.streamlined").apps %}
                     <li class="appearance-none relative flex justify-between items-center w-full px-3 py-4 border rounded-lg hover:outline-none  hover:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:hover:ring-blue-500 dark:hover:border-blue-500 transition-colors hover:z-10 sm:text-sm">
                         <div class="flex">
-                            <div class="my-auto h-full mr-3">
-                                {% if app.icon is defined %}
-                                    <img src="{{ app.icon }}" alt="{{ app.name }}" class="w-5 h-5">
+                            <div class="my-auto h-full mr-3 rounded bg-gray-800">
+                                {% if _app.icon  starts with 'http://' or _app.icon starts with 'https://' %}
+                                    <img src="{{ _app.icon }}" alt="{{ _app.name }}" class="w-5 h-5">
+                                {% elseif _app.icon starts with '/' %}
+                                    {% set pathArray = _app.icon|split('/public/') %}
+
+                                    {% if pathArray|length > 1 %}
+                                        {% set newPath = pathArray[1] %}
+                                        <img src="{{ asset(newPath) }}" alt="{{ _app.name }}" class="w-8 h-8">
+                                    {% else %}
+                                        <img src="{{ asset(_app.icon) }}" alt="{{ _app.name }}" class="w-8 h-8">
+                                    {% endif %}
                                 {% else %}
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                         class="w-5 h-5">
+                                         class="w-8 h-8">
                                         <path fill-rule="evenodd"
                                               d="M5.965 4.904l9.131 9.131a6.5 6.5 0 00-9.131-9.131zm8.07 10.192L4.904 5.965a6.5 6.5 0 009.131 9.131zM4.343 4.343a8 8 0 1111.314 11.314A8 8 0 014.343 4.343z"
                                               clip-rule="evenodd"/>
@@ -36,13 +45,13 @@
                             </div>
                             <div>
                                 <h4 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                    {{ app.name }}
+                                    {{ _app.name }}
                                 </h4>
                                 <p class="text-xs font-normal text-gray-500 dark:text-gray-300 ">
                                     {% set appName = key %}
 
-                                    {% if app.shared_with is defined %}
-                                        {% set appName = app.shared_with  %}
+                                    {% if _app.shared_with is defined %}
+                                        {% set appName = _app.shared_with %}
                                     {% endif %}
 
                                     {% set cookie = getCookie( appName ) %}
@@ -50,7 +59,8 @@
                                 </p>
                             </div>
                         </div>
-                        <div id="delete-app-from-cookies" data-app="{{ appName }}" class="text-red-500 mr-2 cursor-pointer hover:bg-gray-200 hover:dark:bg-gray-600 rounded-lg">
+                        <div id="delete-app-from-cookies" data-app="{{ appName }}"
+                             class="text-red-500 mr-2 cursor-pointer hover:bg-gray-200 hover:dark:bg-gray-600 rounded-lg">
                             <svg data-tooltip-target="tooltip-default" xmlns="http://www.w3.org/2000/svg"
                                  viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5" title="Delete">
                                 <path fill-rule="evenodd"

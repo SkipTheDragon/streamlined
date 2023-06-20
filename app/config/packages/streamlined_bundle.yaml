@@ -4,10 +4,6 @@ streamlined_bundle:
     downloads: # will display the icons in footer if set
       android: "https://play.google.com/store/apps/details?id=com.example"
       ios: "https://apps.apple.com/us/app/example/id1234567890"
-    overridable: # in case you have external faq/privacy/tos pages, or you don't want to use the default templates.
-      faq: "https://www.example.com/faq" # default is empty
-      privacy: "https://www.example.com/privacy" # default is empty
-      tos: "https://www.example.com/terms" # default is empty
   app:
     name: "Streamlined" # the name of the app
     description: "A cool platform built by Wyverr Inc."  # a description of the app, only used in the meta tags
@@ -26,9 +22,16 @@ streamlined_bundle:
   apps: # your apps
     wordpress:
       name: "WordPress"
-      shared_with: "custom_app" # in case this is not an app and just another page/section of an existent app you can set this to the app key (in this case custom_app) and both apps will share their cookies.
-    custom_app:
-      name: "CustomApp" # app name
-      icon: "%kernel.project_dir%/public/bundles/streamlined/images/defaulticon.svg" # show a custom icon for the app
+      icon: "%kernel.project_dir%/public/assets/img/cdnlogo.com_wordpress.svg" # show a custom icon for the app
+    wordpress_login:
+      name: "WordPress - Login" # app name
+      icon: "%kernel.project_dir%/public/assets/img/cdnlogo.com_wordpress.svg" # show a custom icon for the app
       custom_icon_width: 50 # leave this value to 50 to use automatically detected size
       custom_icon_height: 50 # leave this value to 50 to use automatically detected size
+      shared_with: "wordpress" # in case this is not an app and just another page/section of an existent app you can set this to the app key (in this case custom_app) and both apps will share their cookies.
+    wordpress_admin_page:
+      name: "WordPress - Admin Page" # app name
+      icon: "%kernel.project_dir%/public/assets/img/cdnlogo.com_wordpress.svg" # show a custom icon for the app
+      custom_icon_width: 50 # leave this value to 50 to use automatically detected size
+      custom_icon_height: 50 # leave this value to 50 to use automatically detected size
+      shared_with: "wordpress" # in case this is not an app and just another page/section of an existent app you can set this to the app key (in this case custom_app) and both apps will share their cookies.

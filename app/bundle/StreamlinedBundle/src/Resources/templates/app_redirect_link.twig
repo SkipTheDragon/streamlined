@@ -28,6 +28,7 @@
 
             {% else %}
                 <div>
+                    {% set appName = streamlined_config('streamlined_bundle.streamlined').apps[_app].name %}
                     <svg class="mx-auto h-12 w-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                          stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -39,12 +40,12 @@
 
                     <p class="mt-2 text-justify text-sm text-gray-600">
                         This tool allows the documentation to link you to specific pages in
-                        your {{ streamlined_config('streamlined_bundle.streamlined').apps[app].name }}
+                        your {{ appName}}
                         instance. See the FAQ for more information.
                     </p>
                     <p class="mt-2 text-justify text-sm text-gray-600">
                         Configure this tool by entering the URL of
-                        your {{ streamlined_config('streamlined_bundle.streamlined').apps[app].name }} instance.<br/>
+                        your {{ appName}} instance.<br/>
                     </p>
                     <p class="mt-2 text-justify text-sm text-gray-600">
                         Note: This URL is only stored in your browser. To delete it you need to clear your browser cache
@@ -58,7 +59,7 @@
                             <label for="app-instance" class="sr-only">URL</label>
                             <input id="app-instance" name="app-instance" type="url" required
                                    class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                   placeholder="Type your {{ streamlined_config('streamlined_bundle.streamlined').apps[app].name }} instance URL here">
+                                   placeholder="Type your {{ appName}} instance URL here">
                         </div>
                     </div>
 
