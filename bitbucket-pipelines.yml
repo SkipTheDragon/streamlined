@@ -15,8 +15,7 @@ definitions:
           - source .envs
           
 pipelines:
-
-  default:
+  custom:
     - step:
         <<: *save-envs
         deployment: production
