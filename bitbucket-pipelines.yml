@@ -18,7 +18,6 @@ pipelines:
     default:
       - step:
           name: Manual step
-          trigger: manual
           script:
             - cd $BITBUCKET_CLONE_DIR/app/bundle/StreamlinedBundle
             - git init
