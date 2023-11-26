@@ -1,0 +1,14 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "bundles/streamlined/runtime.c0b9c89c.js",
+        "bundles/streamlined/785.05627043.js",
+        "bundles/streamlined/app.b9934c03.js"
+      ],
+      "css": [
+        "bundles/streamlined/app.05244101.css"
+      ]
+    }
+  }
+}

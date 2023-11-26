@@ -1,0 +1,30 @@
+{
+  "name": "wyverr/streamlined-bundle",
+  "type": "symfony-bundle",
+  "minimum-stability": "stable",
+  "version": "1.0.1",
+  "autoload": {
+    "psr-4": {
+      "Wyverr\\StreamlinedBundle\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "symfony/config": "^6.2",
+    "symfony/dependency-injection": "^6.2",
+    "symfony/http-kernel": "^6.2",
+    "ext-ctype": "*",
+    "ext-iconv": "*",
+    "symfony/yaml": "6.2.*",
+    "twig/twig": "^3.0",
+    "symfony/twig-bundle": "^6.2",
+    "meyfa/php-svg": "^0.14.4",
+    "symfony/asset": "^6.2",
+    "symfony/routing": "^6.2",
+    "league/html-to-markdown": "^5.1"
+  },
+  "require-dev": {
+    "symfony/phpunit-bridge": "^6.2",
+    "symfony/webpack-encore-bundle": "^2.0"
+  }
+}
