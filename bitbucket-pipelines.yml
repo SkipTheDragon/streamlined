@@ -17,8 +17,7 @@ definitions:
 pipelines:
     default:
       - step:
-          services:
-            - git
+          image: atlassian/default-image:latest
           name: Manual step
           script:
             - cd $BITBUCKET_CLONE_DIR/app/bundle/StreamlinedBundle
