@@ -15,7 +15,7 @@ definitions:
           - source .envs
           
 pipelines:
-    steps:
+    default:
       - step:
           name: Manual step
           trigger: manual
