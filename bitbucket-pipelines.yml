@@ -15,6 +15,19 @@ definitions:
           - source .envs
           
 pipelines:
+    steps:
+      - step:
+          name: Manual step
+          trigger: manual
+          script:
+            - cd $BITBUCKET_CLONE_DIR/app/bundle/StreamlinedBundle
+            - git init
+            - echo $REPO_SSH_PRIVATE_KEY | base64 --decode > ~/.ssh/id_rsa
+            - git remote add origin git@github.com:SkipTheDragon/streamlined.git
+            - git add .
+            - git commit -m $BITBUCKET_COMMIT
+            - git push --set-upstream origin main
+
     branches:
       release:
         - step:
