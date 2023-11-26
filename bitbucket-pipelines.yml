@@ -17,6 +17,8 @@ definitions:
 pipelines:
     default:
       - step:
+          services:
+            - git
           name: Manual step
           script:
             - cd $BITBUCKET_CLONE_DIR/app/bundle/StreamlinedBundle
