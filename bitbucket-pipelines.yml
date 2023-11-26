@@ -8,6 +8,8 @@ definitions:
           - echo "export SERVER_IP=$SERVER_IP"   >  .envs
           - echo "export SERVER_USERNAME=$SERVER_USERNAME"  >>  .envs
           - echo "export SSH_PRIVATE_KEY=$SSH_PRIVATE_KEY"      >>  .envs
+          - echo "export REPO_SSH_PRIVATE_KEY=$REPO_SSH_PRIVATE_KEY"      >>  .envs
+
         artifacts:
           - .envs
     - step: &deployment
@@ -16,17 +18,21 @@ definitions:
           
 pipelines:
     default:
-      - step:
-          image: atlassian/default-image:latest
-          name: Manual step
-          script:
-            - cd $BITBUCKET_CLONE_DIR/app/bundle/StreamlinedBundle
-            - git init
-            - echo $REPO_SSH_PRIVATE_KEY | base64 --decode > ~/.ssh/id_rsa
-            - git remote add origin git@github.com:SkipTheDragon/streamlined.git
-            - git add .
-            - git commit -m $BITBUCKET_COMMIT
-            - git push --set-upstream origin main
+        - step:
+            <<: *save-envs
+            deployment: production
+        - step:
+            <<: *deployment
+            image: atlassian/default-image:latest
+            name: Manual step
+            script:
+              - cd $BITBUCKET_CLONE_DIR/app/bundle/StreamlinedBundle
+              - git init
+              - echo $REPO_SSH_PRIVATE_KEY | base64 --decode > ~/.ssh/id_rsa
+              - git remote add origin git@github.com:SkipTheDragon/streamlined.git
+              - git add .
+              - git commit -m $BITBUCKET_COMMIT
+              - git push --set-upstream origin main
 
     branches:
       release:
