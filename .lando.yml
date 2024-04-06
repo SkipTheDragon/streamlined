@@ -1,0 +1,24 @@
+# https://docs.lando.dev/plugins/symfony/config.html
+
+name: streamlined
+recipe: symfony
+config:
+  webroot: ./public
+  php: '8.2'
+  via: nginx
+  cache: memcached
+services:
+  appserver:
+    run:
+      - composer install
+    overrides:
+      ports:
+        - 1241
+    scanner:
+      okCodes:
+        - 426
+  node:
+    type: node:18
+tooling:
+  yarn:
+    service: node
