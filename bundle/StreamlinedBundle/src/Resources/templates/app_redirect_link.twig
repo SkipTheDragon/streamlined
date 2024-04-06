@@ -7,35 +7,36 @@
 
                 <div style="font-size: 34px" class="font-bold text-center">
                     <div class="mx-auto w-fit rounded-lg p-2 flex content-center" style="background-color: #4F46E5;">
-                        <div id="countdown" class="animate-countdown h-12 text-white px-4 " >3</div>
+                        <div id="countdown" class="animate-countdown h-12 text-white px-4 ">3</div>
                     </div>
                 </div>
                 <h2 class="mt-6 mb-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
                     Pointing you in the right direction...
                 </h2>
 
-                {% if show_link %}
-                    <p class="mt-2 text-center text-sm text-gray-600 dark:text-slate-400">
-                       You are on your way to: <b>{{ user_instance }}/{{ pointer }}</b>
-                    </p>
-                {% endif %}
+            {% if show_link %}
+                <p class="mt-2 text-center text-sm text-gray-600 dark:text-slate-400">
+                    You are on your way to: <b>{{ user_instance }}/{{ pointer }}</b>
+                </p>
+            {% endif %}
 
                 <script>
-                    setTimeout(function() {
-                        window.location.href = '{{ url|escape }}';
+                    setTimeout(function () {
+                        {# window.location.href = '{{ url|escape }}'; #}
                     }, 3000);
                 </script>
 
             {% else %}
                 <div>
                     {% set appName = streamlined_config('streamlined_bundle.streamlined').apps[_app].name %}
-                        <div class="mx-auto w-fit rounded-lg p-2" style="background-color: #4F46E5;">
-                            <svg class="mx-auto h-12 w-auto" xmlns="http://www.w3.org/2000/svg" fill="transparent" viewBox="0 0 24 24"
-                                 stroke-width="1.5" stroke="white">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
-                            </svg>
-                        </div>
+                    <div class="mx-auto w-fit rounded-lg p-2" style="background-color: #4F46E5;">
+                        <svg class="mx-auto h-12 w-auto" xmlns="http://www.w3.org/2000/svg" fill="transparent"
+                             viewBox="0 0 24 24"
+                             stroke-width="1.5" stroke="white">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
+                        </svg>
+                    </div>
 
                     <h2 class="mt-6 mb-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
                         Pointing you in the right direction...
@@ -43,12 +44,12 @@
 
                     <p class="mt-2 text-justify text-sm text-gray-600 dark:text-slate-400">
                         This tool allows the documentation to link you to specific pages in
-                        your {{ appName}}
+                        your {{ appName }}
                         instance. See the FAQ for more information.
                     </p>
                     <p class="mt-2 text-justify text-sm text-gray-600 dark:text-slate-400">
                         Configure this tool by entering the URL of
-                        your {{ appName}} instance.<br/>
+                        your {{ appName }} instance.<br/>
                     </p>
                     <p class="mt-2 text-justify text-sm text-gray-600 dark:text-slate-400">
                         Note: This URL is only stored in your browser. To delete it you need to clear your browser cache
@@ -62,15 +63,20 @@
                             <label for="app-instance" class="sr-only">URL</label>
                             <input id="app-instance" name="app-instance" type="url" required
                                    class="appearance-none  relative block w-full px-3 py-2 border rounded-lg focus:outline-none  focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
-                                   placeholder="Type your {{ appName}} instance URL here">
+                                   placeholder="Type your {{ appName }} instance URL here">
                         </div>
                     </div>
 
                     <div>
                         <button type="submit"
-                                class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                class="text-md group relative w-full flex justify-center py-2 px-4 border border-transparent  font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Save my instance
                         </button>
+                    </div>
+                    <div class="text-center">
+                        <a href="{{ url('app_manage_instances') }}" class="text-xs dark:text-white text-muted">
+                            Manage my instances
+                        </a>
                     </div>
                 </form>
             {% endif %}
