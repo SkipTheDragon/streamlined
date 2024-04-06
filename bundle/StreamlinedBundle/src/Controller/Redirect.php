@@ -26,18 +26,21 @@ class Redirect extends AbstractController
 
         $cookieToCheck = $currentApp["shared_with"] ?? $app;
 
+        $initialPointer =  $pointer; // Decoded already if encoded
+        $pointer =  str_replace("streamlined-unique-show-url=true", "", $pointer);
+        $isCookieAlreadySet = isset($_COOKIE[$cookieToCheck]) && filter_var($_COOKIE[$cookieToCheck], FILTER_VALIDATE_URL) !== false;
+        $userInstance = $isCookieAlreadySet ? $_COOKIE[$cookieToCheck] : null;
+        $url = $isCookieAlreadySet ? trim($_COOKIE[$cookieToCheck], "/"). "/" . $this->decodeBase64($pointer) : false;
+
         //if cookie is set redirect instant else  render the app.
         return $this->render('@StreamlinedBundle/app_redirect_link.twig', [
             '_app' => $app,
             'cookie' => $cookieToCheck,
-            'show_link' => ($isEncoded && str_contains($pointer, "streamlined-unique-show-url=true")) || !$isEncoded,
-            'pointer' => $pointer =  str_replace("streamlined-unique-show-url=true", "", $pointer),
-            'cookie_already_set' => isset($_COOKIE[$cookieToCheck]) && filter_var($_COOKIE[$cookieToCheck], FILTER_VALIDATE_URL) !== false,
-            'user_instance' => isset($_COOKIE[$cookieToCheck]) && filter_var($_COOKIE[$cookieToCheck], FILTER_VALIDATE_URL) !== false ? $_COOKIE[$cookieToCheck] : null,
-            'url' => isset($_COOKIE[$cookieToCheck])
-            && filter_var($_COOKIE[$cookieToCheck], FILTER_VALIDATE_URL) !== false
-                ? trim($_COOKIE[$cookieToCheck], "/"). "/" . $this->decodeBase64($pointer) :
-                false,
+            'show_link' => ($isEncoded && str_contains($initialPointer, "streamlined-unique-show-url=true")) || !$isEncoded,
+            'pointer' => $pointer,
+            'cookie_already_set' => $isCookieAlreadySet,
+            'user_instance' => $userInstance,
+            'url' => $url
         ]);
     }
 
