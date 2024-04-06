@@ -10,21 +10,21 @@
   },
   "require": {
     "php": ">=8.1",
-    "symfony/config": "^6.2",
-    "symfony/dependency-injection": "^6.2",
-    "symfony/http-kernel": "^6.2",
+    "symfony/config": "^7.0",
+    "symfony/dependency-injection": "^7.0",
+    "symfony/http-kernel": "^7.0",
     "ext-ctype": "*",
     "ext-iconv": "*",
-    "symfony/yaml": "6.2.*",
+    "symfony/yaml": "7.0.*",
     "twig/twig": "^3.0",
-    "symfony/twig-bundle": "^6.2",
+    "symfony/twig-bundle": "^7.0",
     "meyfa/php-svg": "^0.14.4",
-    "symfony/asset": "^6.2",
-    "symfony/routing": "^6.2",
+    "symfony/asset": "^7.0",
+    "symfony/routing": "^7.0",
     "league/html-to-markdown": "^5.1"
   },
   "require-dev": {
-    "symfony/phpunit-bridge": "^6.2",
+    "symfony/phpunit-bridge": "^7.0",
     "symfony/webpack-encore-bundle": "^2.0"
   }
 }
