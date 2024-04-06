@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 dark:bg-gray-900">
+    <div class="min-h-screen flex items-center justify-center  py-12 px-4 sm:px-6 lg:px-8 dark:bg-gray-900">
         <div class="max-w-md w-full space-y-8">
             <div>
                 <div class="mx-auto w-fit rounded-lg p-2" style="background-color: #4F46E5;">
@@ -20,7 +20,7 @@
             </div>
             <ul class="list-none space-y-3">
                 {% for key,_app in streamlined_config("streamlined_bundle.streamlined").apps %}
-                    <li class="appearance-none relative flex justify-between items-center w-full px-3 py-4 border rounded-lg hover:outline-none  hover:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:hover:ring-blue-500 dark:hover:border-blue-500 transition-colors hover:z-10 sm:text-sm">
+                    <li class="appearance-none relative flex justify-between items-center w-full px-3 py-4 border rounded-lg hover:outline-none  hover:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:hover:ring-blue-500 dark:hover:border-blue-500 transition-colors sm:text-sm">
                         <div class="flex">
                             <div class="my-auto h-full mr-3 rounded bg-gray-800">
                                 {% if _app.icon  starts with 'http://' or _app.icon starts with 'https://' %}
@@ -59,17 +59,18 @@
                                 </p>
                             </div>
                         </div>
-                        <div id="delete-app-from-cookies" data-app="{{ appName }}"
+
+                        <div data-tooltip-target="tooltip-default-{{ key }}" id="delete-app-from-cookies" data-app="{{ appName }}"
                              class="text-red-500 mr-2 cursor-pointer hover:bg-gray-200 hover:dark:bg-gray-600 rounded-lg">
-                            <svg data-tooltip-target="tooltip-default" xmlns="http://www.w3.org/2000/svg"
+                            <svg  xmlns="http://www.w3.org/2000/svg"
                                  viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5" title="Delete">
                                 <path fill-rule="evenodd"
                                       d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
                                       clip-rule="evenodd"/>
                             </svg>
 
-                            <div id="tooltip-default" role="tooltip"
-                                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-black">
+                            <div id="tooltip-default-{{ key }}" role="tooltip"
+                                 class="absolute z-100 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-black">
                                 Delete
                                 <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
