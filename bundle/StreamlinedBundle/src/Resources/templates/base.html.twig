@@ -52,19 +52,21 @@
 
 </head>
 <body class="">
-{% block body %}{% endblock %}
+<div class="dark:bg-gray-900">
+    {% block body %}{% endblock %}
+</div>
 {% block cookie %}
-    <div class="wrapper">
+    <div class="wrapper dark:bg-gray-900">
         <header>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#111827"
-                 class="w-6 h-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                 class="w-6 h-6 text-orange-500">
                 <path stroke-linecap="round" stroke-linejoin="round"
                       d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
             </svg>
-            <span class="text-gray-900">Cookies Consent</span>
+            <span class="text-lg text-gray-900 dark:text-white">Cookies Consent</span>
         </header>
 
-        <div class="data">
+        <div class="data dark:text-slate-400">
             <p>This website use cookies to help you have a superior and more relevant browsing experience on the
                 website.</p>
         </div>
