@@ -2,7 +2,27 @@
 
 Crafting instructions and tutorials for your clientele consumes valuable time that could be allocated elsewhere. However, disregarding this aspect risks financial loss, which isn't conducive to business success. With Simplified Connectivity, just share a link and simplify your workload!
 
-[Demo](https://streamlined.wyverr.com) | [Docs](https://wyverr.com/docs/)
+# Demo
+
+You can see the demo [here](https://projects.wyverr.com/streamlined).
+
+## Local
+
+To run the project locally,
+you need to have [docker](https://docs.docker.com/get-docker/) and [lando](https://lando.dev/download/) installed.
+Then after you have cloned the project, open your terminal and run the following commands:
+
+```bash
+cd streamlined/
+lando start # This will start/fetch the docker containers, install the dependencies (yarn and composer) and migrate and seed manticore data
+lando yarn watch # This will build the assets in case they are not built already
+```
+
+Then access the website at [http://streamlined.lndo.site](http://streamlined.lndo.site).
+
+## Website
+
+Or just click the [link](https://projects.wyverr.com/streamlined) to the website.
 
 ## An Illustrative Example:
 
@@ -19,7 +39,7 @@ Consider the typical process of instructing users/customers to activate registra
 
 Avoid verbosity and time wastage by utilizing the following concise method:
 
-*Simply click: [![Redirect to your WordPress Instance](https://streamlined.wyverr.com/get-svg/wordpress/My%20General%20Settings)](https://streamlined.wyverr.com/pointing-to/wordpress/sadas), and check the "Anyone can register" box.*
+*Simply click: [![Redirect to your WordPress Instance](https://projects.wyverr.com/streamlined/get-svg/wordpress/My%20General%20Settings)](https://projects.wyverr.com/streamlined/pointing-to/wordpress/?pointer=sadas), and check the "Anyone can register" box.*
 
 **Rationale:**
 This approach streamlines the process, alleviating common user concerns such as uncertainty and missed steps.
