@@ -112,79 +112,9 @@
                             </div>
                         {% endif %}
                     </div>
+
                     {% if streamlined_config("streamlined_bundle.streamlined").app.allow_uploads %}
-                        <div class="mb-6">
-                            <div>
-                                <label class="relative inline-flex items-center cursor-pointer">
-                                    <input type="checkbox" name="show-preview-upload" id="show-preview-upload" value=""
-                                           class="sr-only peer">
-                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                                    <label for="show-preview-upload"
-                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{{ 'Upload preview image'|trans({}, 'StreamlinedBundle') }}</label>
-                                </label>
-                                <p id="helper-checkbox-text"
-                                   class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-2">
-                                    {{ 'Display a custom icon for people to recognize your links. To increase your chances for the user to recognize links that point them to their website you can do the following:'|trans({}, 'StreamlinedBundle') }}
-                                </p>
-                            </div>
-                            <div class="hidden" id="upload-box">
-                                <ul class="max-w-md space-y-1 text-gray-500 text-xs  list-disc list-inside dark:text-gray-400 mb-4">
-                                    <li>{{ 'Include an icon/color for the current app you are creating a link for.'|trans({}, 'StreamlinedBundle') }}</li>
-                                    <li>{{ 'Maintain a consistent visual appearance in the design.'|trans({}, 'StreamlinedBundle') }}</li>
-                                </ul>
-                                <p id="helper-checkbox-text"
-                                   class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-4">
-                                   {{ 'Some examples of good custom icons:'|trans({}, 'StreamlinedBundle') }}
-                                    <span class="flex mt-2">
-                                         <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="154" height="28"
-                                              aria-label="MY: ANALYTICS" style="border-radius:4px"><g
-                                                     shape-rendering="crispEdges"><path fill="#555"
-                                                                                        d="M0 0h55.5v28H0z"/><path
-                                                         fill="#03a9f4" d="M55.5 0H154v28H55.5z"/></g><g fill="#fff"
-                                                                                                         font-family="Verdana,Geneva,DejaVu Sans,sans-serif"
-                                                                                                         font-size="100"
-                                                                                                         text-anchor="middle"
-                                                                                                         text-rendering="geometricPrecision"><path
-                                                         d="M16.047 7.523a.429.429 0 0 0-.303.129l-6.905 7.002a.343.343 0 0 0-.099.241.345.345 0 0 0 .346.345h1.281v4.92c0 .159.128.287.287.287h4.842v-2.245l-1.859-1.86a1.474 1.474 0 0 1-.577.117 1.477 1.477 0 0 1 0-2.955 1.476 1.476 0 0 1 1.36 2.054l1.076 1.077V13.36a1.478 1.478 0 0 1 .554-2.847 1.477 1.477 0 0 1 .553 2.847v3.275l1.076-1.077a1.475 1.475 0 0 1-.117-.577 1.477 1.477 0 1 1 1.477 1.478 1.474 1.474 0 0 1-.577-.118l-1.86 1.862v2.244h4.843a.286.286 0 0 0 .287-.287v-4.92h1.286a.346.346 0 0 0 .242-.098.345.345 0 0 0 .005-.488l-1.533-1.567v-2.47a.288.288 0 0 0-.287-.289h-1.197a.288.288 0 0 0-.287.288v.673L16.357 7.65a.43.43 0 0 0-.31-.128Zm.003 3.876a.591.591 0 0 0 0 1.182.59.59 0 0 0 .59-.59.59.59 0 0 0-.59-.592zm-2.99 2.992a.59.59 0 0 0-.59.59.591.591 0 1 0 1.18 0 .59.59 0 0 0-.59-.59zm5.979 0a.591.591 0 1 0 .59.59.59.59 0 0 0-.59-.59z"/><g
-                                                         style="stroke-width:.3;stroke:#fff"><path
-                                                             d="m31.903 15.27.048.872q0 .072-.012.263 0 .191-.143.347-.132.143-.335.143-.192 0-.3-.012-.394 0-.394-.347 0-.287.263-2.307.263-2.032.335-2.618l.12-.98q.06-.407.083-.598.024-.192.072-.383.048-.191.144-.31.179-.228.693-.228.86.43 1.77 2.44.645 1.434.86 1.816.215.383.419.526l2.39-4.16q.252-.18.383-.18.383 0 .586.347.203.347.335.85.143.49.239 1.087.107.598.18 1.255.083.646.155 1.268.167 1.494.25 1.876.096.383.096.55 0 .156-.107.311-.108.144-.3.144-.19 0-.382-.144-.191-.155-.239-.37-.036-.227-.084-.586-.035-.359-.095-.801-.06-.454-.12-.945-.06-.502-.12-.956l-.107-.801-.072-.538q0-.24-.012-.442-.012-.204-.095-.251-.084-.048-.263.12-.168.155-.478.645-.67 1.04-1.937 3.503-.168.298-.443.131-.322-.18-.55-.92l-2.2-4.675q-.286.574-.525 3.802-.036.394-.048.67-.06.298-.06.585zM44.007 21.773q-.251.562-.598.562-.168 0-.251-.156-.072-.143 0-.346.263-1.112.753-2.535.502-1.423.67-1.913-.419-.418-1.316-1.674-1.84-2.582-1.84-2.833 0-.012.011-.024l.455-.454q.944.873 2.462 2.965.383.526.61.884.251-.502.395-.86l.227-.586.25-.598q.407-.992 1.125-2.522.107-.048.227-.048.299 0 .43.155.048.06.048.144 0 .071-.024.143zM31.14 18.797h10.006c.28 0 .57.055.57.357s-.29.735-.57.733l-9.962-.094c-.28-.003-.396-.15-.396-.451 0-.302.073-.545.353-.545z"/></g><text
-                                                         x="1047.5" y="175" font-weight="bold" textLength="745"
-                                                         transform="scale(.1)">{{ 'ANALYTICS'|trans({}, 'StreamlinedBundle') }}</text></g></svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="201" height="28"
-                                             aria-label="MY: STATE DEV TOOLS" style="border-radius:4px"><g
-                                                    shape-rendering="crispEdges"><path fill="#555" d="M0 0h55.5v28H0z"/><path
-                                                        fill="#03a9f4" d="M55.5 0H201v28H55.5z"/></g><g fill="#fff"
-                                                                                                        font-family="Verdana,Geneva,DejaVu Sans,sans-serif"
-                                                                                                        font-size="100"
-                                                                                                        text-anchor="middle"
-                                                                                                        text-rendering="geometricPrecision"><path
-                                                        d="M16.047 7.523a.429.429 0 0 0-.303.129l-6.905 7.002a.343.343 0 0 0-.099.241.345.345 0 0 0 .346.345h1.281v4.92c0 .159.128.287.287.287h4.842v-2.245l-1.859-1.86a1.474 1.474 0 0 1-.577.117 1.477 1.477 0 0 1 0-2.955 1.476 1.476 0 0 1 1.36 2.054l1.076 1.077V13.36a1.478 1.478 0 0 1 .554-2.847 1.477 1.477 0 0 1 .553 2.847v3.275l1.076-1.077a1.475 1.475 0 0 1-.117-.577 1.477 1.477 0 1 1 1.477 1.478 1.474 1.474 0 0 1-.577-.118l-1.86 1.862v2.244h4.843a.286.286 0 0 0 .287-.287v-4.92h1.286a.346.346 0 0 0 .242-.098.345.345 0 0 0 .005-.488l-1.533-1.567v-2.47a.288.288 0 0 0-.287-.289h-1.197a.288.288 0 0 0-.287.288v.673L16.357 7.65a.43.43 0 0 0-.31-.128Zm.003 3.876a.591.591 0 0 0 0 1.182.59.59 0 0 0 .59-.59.59.59 0 0 0-.59-.592zm-2.99 2.992a.59.59 0 0 0-.59.59.591.591 0 1 0 1.18 0 .59.59 0 0 0-.59-.59zm5.979 0a.591.591 0 1 0 .59.59.59.59 0 0 0-.59-.59z"/><g
-                                                        style="stroke-width:.3;stroke:#fff"><path
-                                                            d="m31.903 15.27.048.872q0 .072-.012.263 0 .191-.143.347-.132.143-.335.143-.192 0-.3-.012-.394 0-.394-.347 0-.287.263-2.307.263-2.032.335-2.618l.12-.98q.06-.407.083-.598.024-.192.072-.383.048-.191.144-.31.179-.228.693-.228.86.43 1.77 2.44.645 1.434.86 1.816.215.383.419.526l2.39-4.16q.252-.18.383-.18.383 0 .586.347.203.347.335.85.143.49.239 1.087.107.598.18 1.255.083.646.155 1.268.167 1.494.25 1.876.096.383.096.55 0 .156-.107.311-.108.144-.3.144-.19 0-.382-.144-.191-.155-.239-.37-.036-.227-.084-.586-.035-.359-.095-.801-.06-.454-.12-.945-.06-.502-.12-.956l-.107-.801-.072-.538q0-.24-.012-.442-.012-.204-.095-.251-.084-.048-.263.12-.168.155-.478.645-.67 1.04-1.937 3.503-.168.298-.443.131-.322-.18-.55-.92l-2.2-4.675q-.286.574-.525 3.802-.036.394-.048.67-.06.298-.06.585zM44.007 21.773q-.251.562-.598.562-.168 0-.251-.156-.072-.143 0-.346.263-1.112.753-2.535.502-1.423.67-1.913-.419-.418-1.316-1.674-1.84-2.582-1.84-2.833 0-.012.011-.024l.455-.454q.944.873 2.462 2.965.383.526.61.884.251-.502.395-.86l.227-.586.25-.598q.407-.992 1.125-2.522.107-.048.227-.048.299 0 .43.155.048.06.048.144 0 .071-.024.143zM31.14 18.797h10.006c.28 0 .57.055.57.357s-.29.735-.57.733l-9.962-.094c-.28-.003-.396-.15-.396-.451 0-.302.073-.545.353-.545z"/></g><text
-                                                        x="1282.5" y="175" font-weight="bold" textLength="1215"
-                                                        transform="scale(.1)">{{ 'STATE DEV TOOLS'|trans({}, 'StreamlinedBundle') }}</text></g></svg>
-                                    </span>
-                                </p>
-                                <div class="flex items-center justify-center w-full">
-                                    <label for="dropzone-file"
-                                           class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                            <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none"
-                                                 stroke="currentColor" viewBox="0 0 24 24"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                                            </svg>
-                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                                                {{ '<span class="font-semibold">Click to upload</span> or drag and drop'|trans({}, 'StreamlinedBundle')|raw }}
-                                            </p>
-                                            <p class="text-xs text-gray-500 dark:text-gray-400">{{ 'SVG, PNG, JPG or GIF (MAX. 800x400px)'|trans({}, 'StreamlinedBundle') }}</p>
-                                        </div>
-                                        <input id="dropzone-file" name="dropzone-file" type="file" class="hidden"/>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                       {% include '@StreamlinedBundle/components/file_upload.html.twig' %}
                     {% endif %}
 
                 </div>
@@ -197,80 +127,6 @@
                 </div>
             </form>
         </div>
-
-        <div id="modal"
-             class="fixed margin-auto inset-0 flex items-center justify-center z-10
-             hidden scale-0 opacity-0 transition-transform transition-opacity transform
-">
-            <div class="bg-white p-6 rounded-lg shadow-xl dark:bg-gray-900 z-40 sm:w-6/12 w-full">
-                <div class="mb-6 flex items-center justify-start">
-                    <div class="mr-6 w-fit rounded-lg p-2 bg-green-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                             class="w-auto mx-auto h-12 ">
-                            <path fill-rule="evenodd"
-                                  d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z"
-                                  clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">
-                            {{ 'Done! '|trans({}, 'StreamlinedBundle') }}
-                        </h2>
-                        <p class="text-sm mt-1 text-gray-500 dark:text-gray-400  ">
-                            {{ 'Just copy and paste the code below based on your needs. '|trans({}, 'StreamlinedBundle') }}
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex  items-center">
-                    <div class="mr-6">
-                        <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">{{ 'Preview: '|trans({}, 'StreamlinedBundle') }}</h4>
-                        <div id="previewResponse">
-
-                        </div>
-                    </div>
-                    <div class="hidden">
-                        <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">{{ 'RAW: '|trans({}, 'StreamlinedBundle') }}</h4>
-                        <div id="rawResponse" rel="noopener noreferrer"
-                             class="text-blue-500 font-bold underline "></div>
-                    </div>
-                </div>
-
-                <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">{{ 'HTML: '|trans({}, 'StreamlinedBundle') }}</h4>
-                <div class="block bg-gray-200 p-4 rounded relative dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-100">
-                    <button data-content="htmlResponse"
-                            class="copy-code-button absolute right-0 -top-6 h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
-                        {{ 'Copy Code'|trans({}, 'StreamlinedBundle') }}
-                    </button>
-                    <code id="htmlResponse"
-                          class="break-words p-4 whitespace-normal">
-                        {{ 'HTML'|trans({}, 'StreamlinedBundle') }}
-                    </code>
-                </div>
-
-                <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">  {{ 'MARKDOWN:'|trans({}, 'StreamlinedBundle') }} </h4>
-                <div class="block bg-gray-200 p-4 rounded relative dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-100">
-                    <button data-content="markdownResponse"
-                            class="copy-code-button absolute right-0 -top-6 h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
-                        {{ 'Copy Code'|trans({}, 'StreamlinedBundle') }}
-                    </button>
-                    <code id="markdownResponse"
-                          class="break-words p-4 whitespace-normal">
-                        {{ 'Markdown:'|trans({}, 'StreamlinedBundle') }}
-                    </code>
-                </div>
-
-                <div class="flex justify-end">
-                    <button type="submit" id="doneButton"
-                            class="mt-6 group relative text-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                        {{ 'Close Popup'|trans({}, 'StreamlinedBundle') }}
-                    </button>
-                </div>
-            </div>
-            <div id="overlay" class="fixed inset-0 transition-opacity bg-black bg-opacity-50 hidden">
-            </div>
-        </div>
-
-
+       {% include '@StreamlinedBundle/components/modal.html.twig' %}
     </div>
 {% endblock %}
