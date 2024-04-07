@@ -15,6 +15,7 @@ streamlined_bundle:
     favicon: "./bundles/streamlined/images/favicon.svg" # the favicon of the app
     favicon_dark: "./bundles/streamlined/images/favicon_dark.svg" # the favicon of the app in dark mode
     allow_dark_mode: true # if set to false, the dark mode switch will be hidden
+    allow_uploads: true
   svg: # settings for the generated images you can see a preview at https://your-app.com/
     icon_background_color: "#4F46E5" # the background color of the icons
     text_background_color: "#080C13" # the background color of the text

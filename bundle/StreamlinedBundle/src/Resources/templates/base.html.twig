@@ -7,27 +7,40 @@
     <link rel="icon"
           type="image/svg"
           href="{{ streamlined_config("streamlined_bundle.streamlined").app.favicon }}">
-    <link rel="icon" type="image/svg" href="{{ streamlined_config("streamlined_bundle.streamlined").app.favicon_dark }}" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/svg" href="{{ streamlined_config("streamlined_bundle.streamlined").app.favicon_dark }}"
+          media="(prefers-color-scheme: dark)">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="WYVERR | Tudorache Leonard Valentin"> <!-- Please don't delete :) -->
 
-    <meta name="title" content="{% block title1 %} Build Your Link {% endblock %} - {{ streamlined_config("streamlined_bundle.streamlined").app.name }}" />
-    <meta name="description" content="{{ streamlined_config('streamlined_bundle.streamlined').app.description }}" />
+    <meta name="title"
+          content="{% block title1 %} Build Your Link {% endblock %} - {{ streamlined_config("streamlined_bundle.streamlined").app.name }}"/>
+    <meta name="description" content="{{ streamlined_config('streamlined_bundle.streamlined').app.description }}"/>
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ app.request.requestUri }}" />
-    <meta property="og:title" content="{% block title2 %} Build Your Link {% endblock %} - {{ streamlined_config("streamlined_bundle.streamlined").app.name }}" />
-    <meta property="og:description" content="{{ streamlined_config('streamlined_bundle.streamlined').app.description }}"  />
-    <meta property="og:image" content="{{ asset("./bundles/streamlined/images/logo.webp") }}" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ app.request.requestUri }}"/>
+    <meta property="og:title"
+          content="{% block title2 %} Build Your Link {% endblock %} - {{ streamlined_config("streamlined_bundle.streamlined").app.name }}"/>
+    <meta property="og:description"
+          content="{{ streamlined_config('streamlined_bundle.streamlined').app.description }}"/>
+    <meta property="og:image" content="{{ asset("./bundles/streamlined/images/logo.webp") }}"/>
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ app.request.requestUri }}" />
-    <meta property="twitter:title" content="{% block title3 %} Build Your Link {% endblock %} - {{ streamlined_config("streamlined_bundle.streamlined").app.name }}" />
-    <meta property="twitter:description" content="{{ streamlined_config('streamlined_bundle.streamlined').app.description }}" />
-    <meta property="twitter:image" content="{{ asset("./bundles/streamlined/images/logo.webp") }}" />
+    <meta property="twitter:card" content="summary_large_image"/>
+    <meta property="twitter:url"
+          content="{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ app.request.requestUri }}"/>
+    <meta property="twitter:title"
+          content="{% block title3 %} Build Your Link {% endblock %} - {{ streamlined_config("streamlined_bundle.streamlined").app.name }}"/>
+    <meta property="twitter:description"
+          content="{{ streamlined_config('streamlined_bundle.streamlined').app.description }}"/>
+    <meta property="twitter:image" content="{{ asset("./bundles/streamlined/images/logo.webp") }}"/>
+
+    <script>
+        window.trans = {
+            'copyCode.error': '{{ 'Failed to copy text. Make sure you are on a secure connection!'|trans({}, 'StreamlinedBundle') }}',
+        }
+    </script>
 
     {% set manifestFile = 'entrypoints.json' %}
     {% set manifestPath = 'bundles/streamlined/' ~ manifestFile %}
@@ -40,12 +53,12 @@
         {% if manifest.entrypoints.app is defined %}
             {# Include CSS stylesheets #}
             {% for cssAsset in manifest.entrypoints.app.css %}
-                <link rel="stylesheet" href="{{ asset(cssAsset) }}">
+        <link rel="stylesheet" href="{{ asset(cssAsset) }}">
             {% endfor %}
 
             {# Include JavaScript files #}
             {% for jsAsset in manifest.entrypoints.app.js %}
-                <script src="{{ asset(jsAsset) }}" type="text/javascript"></script>
+            <script src="{{ asset(jsAsset) }}" type="text/javascript"></script>
             {% endfor %}
         {% endif %}
     {% endif %}
@@ -58,22 +71,22 @@
 {% block cookie %}
     <div class="wrapper dark:bg-gray-900">
         <header>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor"
                  class="w-6 h-6 text-orange-500">
                 <path stroke-linecap="round" stroke-linejoin="round"
                       d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
             </svg>
-            <span class="text-lg text-gray-900 dark:text-white">Cookies Consent</span>
+            <span class="text-lg text-gray-900 dark:text-white">{{ 'Cookies Consent'|trans({}, 'StreamlinedBundle') }}</span>
         </header>
 
         <div class="data dark:text-slate-400">
-            <p>This website use cookies to help you have a superior and more relevant browsing experience on the
-                website.</p>
+            <p>{{ 'This website use cookies to help you have a superior and more relevant browsing experience on the website.'|trans({}, 'StreamlinedBundle') }}</p>
         </div>
 
         <div class="buttons">
-            <button class="button" id="acceptBtn">Accept</button>
-            <button class="button" id="declineBtn">Decline</button>
+            <button class="button" id="acceptBtn">{{ 'Accept'|trans({}, 'StreamlinedBundle') }}</button>
+            <button class="button" id="declineBtn">{{ 'Decline'|trans({}, 'StreamlinedBundle') }}</button>
         </div>
     </div>
 {% endblock %}
@@ -93,81 +106,78 @@
     <div class="bg-linear-pink-invert py-12 px-4  dark:bg-gray-700">
         <div tabindex="0" aria-label="footer"
              class="focus:outline-none mx-auto container flex flex-col items-center justify-center">
-            <div tabindex="0" aria-label="prodify logo"  class="mt-3" role="img">
+            <div tabindex="0" aria-label="prodify logo" class="mt-3" role="img">
                 <div class="dark:hidden">
                     <img width="279" src="{{ asset(streamlined_config("streamlined_bundle.streamlined").app.logo) }}"
                          alt="logo">
                 </div>
 
                 <div class="hidden dark:block md:hidden">
-                    <img width="279" src="{{ asset(streamlined_config("streamlined_bundle.streamlined").app.logo_dark) }}"
+                    <img width="279"
+                         src="{{ asset(streamlined_config("streamlined_bundle.streamlined").app.logo_dark) }}"
                          alt="logo">
                 </div>
             </div>
             <div class="text-black flex flex-col md:items-center f-f-l pt-3">
                 {% if streamlined_config("streamlined_bundle.streamlined").app.motto|length > 0 %}
-                <h1 tabindex="0"
-                    class="focus:outline-none dark:text-white text-2xl font-black mt-4">{{ streamlined_config("streamlined_bundle.streamlined").app.motto }}</h1>
+                    <h1 tabindex="0"
+                        class="focus:outline-none dark:text-white text-2xl font-black mt-4">{{ streamlined_config("streamlined_bundle.streamlined").app.motto|trans({}, 'StreamlinedBundle') }}</h1>
                 {% endif %}
                 <div class="md:flex items-center mt-5 md:mt-10 text-base text-color f-f-l">
                     <h2 class=" md:mr-6 pb-4 md:py-0 cursor-pointer">
                         <a class="focus:outline-none dark:text-white focus:underline hover:text-gray-700"
                            href="{{ streamlined_config("streamlined_bundle.streamlined").links.user_website }}"
-                        >Our Website</a>
+                        >{{ 'Our Website'|trans({}, 'StreamlinedBundle') }}</a>
                     </h2>
                     <h2 class="cursor-pointer">
                         <a class="focus:outline-none dark:text-white focus:underline hover:text-gray-700"
-                           href="{{ streamlined_config("streamlined_bundle.streamlined").links.overridable.tos ?? url('app_tos') }}">Terms
-                            And Conditions </a>
+                           href="{{ streamlined_config("streamlined_bundle.streamlined").links.overridable.tos ?? url('app_tos') }}">{{ 'Terms And Conditions'|trans({}, 'StreamlinedBundle') }}</a>
                     </h2>
                 </div>
                 <div class="my-6 text-base text-color f-f-l">
                     <ul class="md:flex items-center">
                         <li class="md:mr-6 cursor-pointer pt-4 lg:py-0"><a href="{{ url('app_manage_instances') }}"
-                                                                           class="focus:outline-none dark:text-white  focus:underline hover:text-gray-500">Manage
-                                My Instances</a>
+                                                                           class="focus:outline-none dark:text-white  focus:underline hover:text-gray-500">{{ 'Manage My Instances'|trans({}, 'StreamlinedBundle') }}</a>
                         </li>
                         <li class="md:mr-6 cursor-pointer pt-4 lg:py-0"><a href="{{ url('app_create_link') }}"
-                                                                           class="focus:outline-none dark:text-white  focus:underline hover:text-gray-500">Create link</a>
+                                                                           class="focus:outline-none dark:text-white  focus:underline hover:text-gray-500">{{ 'Create link'|trans({}, 'StreamlinedBundle') }}</a>
                         </li>
                         <li class="md:mr-6 cursor-pointer pt-4 lg:py-0"><a
                                     href="{{ streamlined_config("streamlined_bundle.streamlined").links.overridable.faq ?? url('app_faq') }}"
-                                    class="focus:outline-none dark:text-white  focus:underline hover:text-gray-500">F.A.Q </a>
+                                    class="focus:outline-none dark:text-white  focus:underline hover:text-gray-500">{{ 'F.A.Q'|trans({}, 'StreamlinedBundle') }}</a>
                         </li>
                         <li class="cursor-pointer pt-4 lg:py-0"><a
                                     href="{{ streamlined_config("streamlined_bundle.streamlined").links.overridable.privacy ?? url('app_privacy') }}"
-                                    class="focus:outline-none focus:underline dark:text-white hover:text-gray-500">Privacy
-                                Policy </a></li>
+                                    class="focus:outline-none focus:underline dark:text-white hover:text-gray-500">{{ 'Privacy Policy'|trans({}, 'StreamlinedBundle') }}</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="text-sm text-color mb-10 f-f-l">
                     <p tabindex="0" class="dark:text-white focus:outline-none">© {{ 'now' | date('Y') }}
-                        {{ streamlined_config("streamlined_bundle.streamlined").app.name }}. All rights
-                        reserved</p>
+                        {% trans with {'%appName%': streamlined_config("streamlined_bundle.streamlined").app.name} from 'StreamlinedBundle' %}%appName% All rights reserved{% endtrans %}
+                    </p>
                 </div>
             </div>
             <div class="w-9/12 h-0.5 bg-gray-100 dark:bg-gray-700 rounded-full"></div>
             <div class="flex justify-between items-center pt-12">
                 {% if  streamlined_config("streamlined_bundle.streamlined").links.downloads.ios is defined %}
-                    <a href="{{ streamlined_config("streamlined_bundle.streamlined").links.downloads.ios }}" target="_blank">
+                    <a href="{{ streamlined_config("streamlined_bundle.streamlined").links.downloads.ios }}"
+                       target="_blank">
                         <button
                                 class="hover:shadow-lg mr-4 focus:outline-none rounded-md focus:ring-2 focus:ring-offset-2 focus:ring-gray-600"
-                                aria-label="download on the app store">
-                            <div class="">
-                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_center_aligned_with_logo-svg2.svg"
-                                     alt="download on the app store">
-                            </div>
+                                aria-label="{{ 'Download on the app store'|trans({}, 'StreamlinedBundle') }}">
+                                <img src="{{ asset('/bundles/streamlined/images/simple_center_aligned_with_logo-svg2.svg') }}"
+                                     alt="{{ 'Download on the app store'|trans({}, 'StreamlinedBundle') }}">
                         </button>
                     </a>
                 {% endif %}
                 {% if  streamlined_config("streamlined_bundle.streamlined").links.downloads.android is defined %}
-                    <a href="{{ streamlined_config("streamlined_bundle.streamlined").links.downloads.android }}" target="_blank">
+                    <a href="{{ streamlined_config("streamlined_bundle.streamlined").links.downloads.android }}"
+                       target="_blank">
                         <button class="hover:shadow-lg focus:outline-none rounded-md focus:ring-2 focus:ring-offset-2 focus:ring-gray-600"
-                                aria-label="get it on google play">
-                            <div>
-                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_center_aligned_with_logo-svg3.svg"
-                                     alt="get it on google play">
-                            </div>
+                                aria-label="{{ 'Get it on google play'|trans({}, 'StreamlinedBundle') }}">
+                                <img src="{{ asset('/bundles/streamlined/images/simple_center_aligned_with_logo-svg3.svg') }}"
+                                     alt="{{ 'Get it on google play'|trans({}, 'StreamlinedBundle') }}">
                         </button>
                     </a>
                 {% endif %}

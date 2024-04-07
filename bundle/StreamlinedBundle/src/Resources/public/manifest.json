@@ -1,6 +1,6 @@
 {
   "bundles/streamlined/app.css": "/bundles/streamlined/app.1a5b4624.css",
-  "bundles/streamlined/app.js": "/bundles/streamlined/app.e99cb5db.js",
+  "bundles/streamlined/app.js": "/bundles/streamlined/app.e4b13ff2.js",
   "bundles/streamlined/runtime.js": "/bundles/streamlined/runtime.74015541.js",
   "bundles/streamlined/vendors-node_modules_flowbite_lib_esm_index_js-node_modules_core-js_modules_es_array_for-each-4080a8.b65fd9ad.js": "/bundles/streamlined/vendors-node_modules_flowbite_lib_esm_index_js-node_modules_core-js_modules_es_array_for-each-4080a8.b65fd9ad.js",
   "bundles/streamlined/images/logo.svg": "/bundles/streamlined/images/logo.svg",
@@ -8,5 +8,7 @@
   "bundles/streamlined/images/defaulticon.svg": "/bundles/streamlined/images/defaulticon.svg",
   "bundles/streamlined/images/favicon.svg": "/bundles/streamlined/images/favicon.svg",
   "bundles/streamlined/images/favicon_dark.svg": "/bundles/streamlined/images/favicon_dark.svg",
-  "bundles/streamlined/images/logo.webp": "/bundles/streamlined/images/logo.webp"
+  "bundles/streamlined/images/logo.webp": "/bundles/streamlined/images/logo.webp",
+  "bundles/streamlined/images/simple_center_aligned_with_logo-svg2.svg": "/bundles/streamlined/images/simple_center_aligned_with_logo-svg2.svg",
+  "bundles/streamlined/images/simple_center_aligned_with_logo-svg3.svg": "/bundles/streamlined/images/simple_center_aligned_with_logo-svg3.svg"
 }

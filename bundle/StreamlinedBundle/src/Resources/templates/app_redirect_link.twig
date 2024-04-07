@@ -11,12 +11,14 @@
                     </div>
                 </div>
                 <h2 class="mt-6 mb-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
-                    Pointing you in the right direction...
+                    {{ 'Pointing you in the right direction...'|trans({}, 'StreamlinedBundle') }}
                 </h2>
 
             {% if show_link %}
                 <p class="mt-2 text-center text-sm text-gray-600 dark:text-slate-400">
-                    You are on your way to: <b>{{ user_instance }}/{{ pointer }}</b>
+                    {% trans with {'%user_instance%': user_instance, '%pointer%': pointer}  from 'StreamlinedBundle' %}
+                        You are on your way to: <b>%user_instance%/%pointer%</b>
+                    {% endtrans %}
                 </p>
             {% endif %}
 
@@ -39,43 +41,46 @@
                     </div>
 
                     <h2 class="mt-6 mb-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
-                        Pointing you in the right direction...
+                        {{ 'Pointing you in the right direction...'|trans({}, 'StreamlinedBundle') }}
                     </h2>
 
                     <p class="mt-2 text-justify text-sm text-gray-600 dark:text-slate-400">
-                        This tool allows the documentation to link you to specific pages in
-                        your {{ appName }}
-                        instance. See the FAQ for more information.
+                        {% trans with {'%appName%': appName}  from 'StreamlinedBundle' %}
+                            This tool allows the documentation to link you to specific pages in
+                            your %appName% instance. See the FAQ for more information.
+                        {% endtrans %}
                     </p>
                     <p class="mt-2 text-justify text-sm text-gray-600 dark:text-slate-400">
+                        {% trans with {'%appName%': appName}  from 'StreamlinedBundle' %}
                         Configure this tool by entering the URL of
-                        your {{ appName }} instance.<br/>
+                        your %appName% instance.
+                        {% endtrans %}<br/>
                     </p>
                     <p class="mt-2 text-justify text-sm text-gray-600 dark:text-slate-400">
-                        Note: This URL is only stored in your browser. To delete it you need to clear your browser cache
-                        for this website.
+                        {{ 'Note: This URL is only stored in your browser. To delete it you need to clear your browser cache
+                        for this website.'|trans({}, 'StreamlinedBundle') }}
                     </p>
                 </div>
                 <form class="space-y-6" method="POST" id="save-cookie-form" data-app="{{ cookie }}">
                     <input type="hidden" name="remember" value="True">
                     <div class="rounded-md shadow-sm -space-y-px">
                         <div>
-                            <label for="app-instance" class="sr-only">URL</label>
+                            <label for="app-instance" class="sr-only">{{ 'URL'|trans({}, 'StreamlinedBundle') }}</label>
                             <input id="app-instance" name="app-instance" type="url" required
                                    class="appearance-none  relative block w-full px-3 py-2 border rounded-lg focus:outline-none  focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
-                                   placeholder="Type your {{ appName }} instance URL here">
+                                   placeholder="{% trans with {'%appName%': appName}  from 'StreamlinedBundle' %}Type your %appName% instance URL here{% endtrans %} ">
                         </div>
                     </div>
 
                     <div>
                         <button type="submit"
                                 class="text-md group relative w-full flex justify-center py-2 px-4 border border-transparent  font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            Save my instance
+                            {{ 'Save my instance'|trans({}, 'StreamlinedBundle') }}
                         </button>
                     </div>
                     <div class="text-center">
                         <a href="{{ url('app_manage_instances') }}" class="text-xs dark:text-white text-muted">
-                            Manage my instances
+                            {{ 'Manage my instances'|trans({}, 'StreamlinedBundle') }}
                         </a>
                     </div>
                 </form>

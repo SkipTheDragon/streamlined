@@ -11,7 +11,7 @@
                 const codeText = contentElement.innerText;
 
                 if (navigator.clipboard === undefined) {
-                    button.innerText = 'Failed to copy text. Make sure you are on a secure connection!';
+                    button.innerText = window.trans['copyCode.error'];
                     button.classList.remove('bg-indigo-700', 'hover:bg-green-600');
                     button.classList.add('bg-red-500', 'hover:bg-red-600');
                     button.style.borderColor = '#EF4444';
@@ -37,7 +37,7 @@
                         }, 3000);
                     })
                     .catch(function(error) {
-                        console.error('Failed to copy text: (Make sure you are on a secure connection!) ', error);
+                        console.error(window.trans['copyCode.error'], error);
                     });
             });
         });

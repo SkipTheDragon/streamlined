@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class Builder extends AbstractController
 {
@@ -36,13 +37,19 @@ class Builder extends AbstractController
     }
 
     #[Route('/get-svg/{app}/{label}', name: 'app_get_svg', methods: ["GET"])]
-    public function getImage(string $app, string $label, #[Autowire(service: "service_container")] ContainerInterface $container): Response
+    public function getImage(
+        string $app,
+        string $label,
+        #[Autowire(service: "service_container")] ContainerInterface $container,
+        TranslatorInterface $translator
+    ): Response
     {
         $config = $container->getParameter('streamlined_bundle.streamlined');
         $currentApp = $config["apps"][$app] ?? null;
 
         if (is_null($currentApp)) {
-            return new Response("Could not generate image because the app does not exist.");
+            $message = $translator->trans('Could not generate image because the app does not exist.', domain: 'StreamlinedBundle');
+            return new Response($message, 400);
         }
 
         $html = $this->generateSVG(
@@ -63,7 +70,12 @@ class Builder extends AbstractController
 
 
     #[Route('/process-form', name: "process_form", methods: ["POST"])]
-    public function processForm(Request $request, #[Autowire(service: "router.default")] UrlGeneratorInterface $urlGenerator,  #[Autowire(service: "service_container")] ContainerInterface $container): JsonResponse
+    public function processForm(
+        Request $request,
+        #[Autowire(service: "router.default")] UrlGeneratorInterface $urlGenerator,
+        #[Autowire(service: "service_container")] ContainerInterface $container,
+        TranslatorInterface $translator
+    ): JsonResponse
     {
         // Retrieve form data
         $app = $request->request->get('app');
@@ -72,6 +84,7 @@ class Builder extends AbstractController
 
         $config = $container->getParameter('streamlined_bundle.streamlined');
         $currentApp = $this->findElementByName($config["apps"], $app);
+        $altMessage = $translator->trans('Redirect to your %app% instance', ['%app%' => $currentApp["name"]], 'StreamlinedBundle');
 
         $app = $currentApp["key"];
 
@@ -106,15 +119,9 @@ class Builder extends AbstractController
         ], UrlGeneratorInterface::ABSOLUTE_URL);
 
         $html = "<a href='$theLink' target='_blank'>";
-        $html .= "<img src='$url' alt='Redirect to your ".$currentApp["name"]." Instance'>";
+        $html .= "<img src='$url' alt='$altMessage'>";
         $html .= "</a>";
         $converter = new HtmlConverter();
-
-
-        // add copy to raw/html/and markdown
-        // render
-        // Return a response or redirect to another page
-        // ...
 
         return $this->json([
             "raw" => $theLink,
@@ -139,12 +146,6 @@ class Builder extends AbstractController
         }
 
         // Check if the input is an SVG
-        if (preg_match('/^<svg\b[^>]*>(.*?)<\/svg>/is', $input)) {
-            // Return the SVG as is
-            return $input;
-        }
-
-        // The input is neither a link nor an SVG, return it as is
         return $input;
     }
 

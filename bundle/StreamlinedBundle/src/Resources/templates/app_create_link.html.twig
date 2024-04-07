@@ -13,7 +13,7 @@
                     </svg>
                 </div>
                 <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
-                    Build Your Link
+                    {{ 'Build Your Link'|trans({}, 'StreamlinedBundle') }}
                 </h2>
             </div>
             <form class="mt-8 space-y-6" method="POST" id="myForm">
@@ -21,9 +21,9 @@
                     <div class="mb-6">
                         <label for="app"
                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span
-                                    class="text-red-500">*</span> Select an app: </label>
+                                    class="text-red-500">*</span> {{ 'Select an app:'|trans({}, 'StreamlinedBundle') }} </label>
                         <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-4">
-                            Used to allow the user to have a different website for each app they bought from you.</p>
+                            {{ 'Used to allow the user to have a different website for each app they bought from you.'|trans({}, 'StreamlinedBundle') }} </p>
                         <select required name="app" id="app"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
@@ -32,32 +32,32 @@
                                     <option value="{{ app["name"] }}">{{ app["name"] }}</option>
                                 {% endfor %}
                             {% else %}
-                                <option value="null" selected disabled>No apps configured</option>
+                                <option value="null" selected disabled>{{ 'No apps configured'|trans({}, 'StreamlinedBundle') }}</option>
                             {% endif %}
                         </select>
                     </div>
 
                     <div class="mb-6">
                         <label for="query" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span
-                                    class="text-red-500">*</span> Redirect to:</label>
+                                    class="text-red-500">*</span>{{ 'Redirect to:'|trans({}, 'StreamlinedBundle') }}</label>
                         <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-4">
-                            Do not include the website URL, just the query.</p>
+                            {{ 'Do not include the website URL, just the query.'|trans({}, 'StreamlinedBundle') }} </p>
                         <input id="query" name="query" type="text" required
                                class="appearance-none  relative block w-full px-3 py-2 border rounded-lg focus:outline-none  focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
-                               placeholder="Ex: /some-page?some=query&other=query">
+                               placeholder="{{ 'Example: /some-page?some=query&other=query'|trans({}, 'StreamlinedBundle') }}">
                     </div>
 
                     <div class="mb-6">
                         <label for="label" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span
                                     class="text-red-500">*</span>
-                            Label:
+                            {{ 'Label:'|trans({}, 'StreamlinedBundle') }}
                         </label>
                         <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-4">
-                            A descriptive text that will appear on the redirect page and the icon.
+                            {{ 'A descriptive text that will appear on the redirect page and the icon.'|trans({}, 'StreamlinedBundle') }}
                         </p>
                         <input id="label" name="label" type="text" required
                                class="appearance-none  relative block w-full px-3 py-2 border rounded-lg focus:outline-none  focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
-                               placeholder="Describe this link.">
+                               placeholder="{{ 'Describe this link.'|trans({}, 'StreamlinedBundle') }}">
                     </div>
 
                     <div class="space-y-4 mb-6">
@@ -69,31 +69,30 @@
                                            class="sr-only peer">
                                     <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                                     <label for="instant_redirect"
-                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Instant
-                                        redirect</label>
+                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                        {{ 'Instant redirect'|trans({}, 'StreamlinedBundle') }}
+                                    </label>
                                 </label>
                                 <p id="helper-checkbox-text"
                                    class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-2">
-                                    Instead of waiting 3 seconds we will redirect the user instantly. (Works only if the
-                                    user already provided the url to their website.)
+                                    {{ 'Instead of waiting 3 seconds we will redirect the user instantly. (Works only if the
+                                    user already provided the url to their website.)'|trans({}, 'StreamlinedBundle') }}
                                 </p>
                             </div>
                         {% endif %}
                         {% if not streamlined_config("streamlined_bundle.streamlined").app.disable_destination_obfuscation %}
-
                             <div>
                                 <label class="relative inline-flex items-center cursor-pointer">
                                     <input type="checkbox" name="hide-url-checkbox" id="hide-url-checkbox" value=""
                                            class="sr-only peer">
                                     <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                                     <label for="hide-url-checkbox"
-                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Obfuscate
-                                        destination</label>
+                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{{ 'Obfuscate destination'|trans({}, 'StreamlinedBundle') }}</label>
                                 </label>
                                 <p id="helper-checkbox-text"
                                    class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-2">
-                                    Encode your "Redirect to" query so that it is not readable to the user. This can
-                                    help if you are trying to add utm parameters to your query.
+                                    {{ 'Encode your "Redirect to" query so that it is not readable to the user. This can
+                                    help if you are trying to add utm parameters to your query.'|trans({}, 'StreamlinedBundle') }}
                                 </p>
                             </div>
 
@@ -104,12 +103,11 @@
                                            class="sr-only peer">
                                     <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                                     <label for="show-redirect-url-checkbox"
-                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Show
-                                        destination to user</label>
+                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{{ 'Show destination to user'|trans({}, 'StreamlinedBundle') }}</label>
                                 </label>
                                 <p id="helper-checkbox-text"
                                    class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-2">
-                                    Before redirecting we will still show the destination to the user.
+                                    {{ 'Before redirecting we will still show the destination to the user.'|trans({}, 'StreamlinedBundle') }}
                                 </p>
                             </div>
                         {% endif %}
@@ -122,25 +120,21 @@
                                            class="sr-only peer">
                                     <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                                     <label for="show-preview-upload"
-                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Upload
-                                        preview image</label>
+                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{{ 'Upload preview image'|trans({}, 'StreamlinedBundle') }}</label>
                                 </label>
                                 <p id="helper-checkbox-text"
                                    class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-2">
-                                    Display a custom icon for people to recognize your links. To increase your chances
-                                    for
-                                    the
-                                    user to recognize links that point them to their website you can do the following:
+                                    {{ 'Display a custom icon for people to recognize your links. To increase your chances for the user to recognize links that point them to their website you can do the following:'|trans({}, 'StreamlinedBundle') }}
                                 </p>
                             </div>
                             <div class="hidden" id="upload-box">
                                 <ul class="max-w-md space-y-1 text-gray-500 text-xs  list-disc list-inside dark:text-gray-400 mb-4">
-                                    <li>Include an icon/color for the current app you are creating a link for.</li>
-                                    <li>Maintain a consistent visual appearance in the design.</li>
+                                    <li>{{ 'Include an icon/color for the current app you are creating a link for.'|trans({}, 'StreamlinedBundle') }}</li>
+                                    <li>{{ 'Maintain a consistent visual appearance in the design.'|trans({}, 'StreamlinedBundle') }}</li>
                                 </ul>
                                 <p id="helper-checkbox-text"
                                    class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-4">
-                                    Some examples of good custom icons:
+                                   {{ 'Some examples of good custom icons:'|trans({}, 'StreamlinedBundle') }}
                                     <span class="flex mt-2">
                                          <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="154" height="28"
                                               aria-label="MY: ANALYTICS" style="border-radius:4px"><g
@@ -155,7 +149,7 @@
                                                          style="stroke-width:.3;stroke:#fff"><path
                                                              d="m31.903 15.27.048.872q0 .072-.012.263 0 .191-.143.347-.132.143-.335.143-.192 0-.3-.012-.394 0-.394-.347 0-.287.263-2.307.263-2.032.335-2.618l.12-.98q.06-.407.083-.598.024-.192.072-.383.048-.191.144-.31.179-.228.693-.228.86.43 1.77 2.44.645 1.434.86 1.816.215.383.419.526l2.39-4.16q.252-.18.383-.18.383 0 .586.347.203.347.335.85.143.49.239 1.087.107.598.18 1.255.083.646.155 1.268.167 1.494.25 1.876.096.383.096.55 0 .156-.107.311-.108.144-.3.144-.19 0-.382-.144-.191-.155-.239-.37-.036-.227-.084-.586-.035-.359-.095-.801-.06-.454-.12-.945-.06-.502-.12-.956l-.107-.801-.072-.538q0-.24-.012-.442-.012-.204-.095-.251-.084-.048-.263.12-.168.155-.478.645-.67 1.04-1.937 3.503-.168.298-.443.131-.322-.18-.55-.92l-2.2-4.675q-.286.574-.525 3.802-.036.394-.048.67-.06.298-.06.585zM44.007 21.773q-.251.562-.598.562-.168 0-.251-.156-.072-.143 0-.346.263-1.112.753-2.535.502-1.423.67-1.913-.419-.418-1.316-1.674-1.84-2.582-1.84-2.833 0-.012.011-.024l.455-.454q.944.873 2.462 2.965.383.526.61.884.251-.502.395-.86l.227-.586.25-.598q.407-.992 1.125-2.522.107-.048.227-.048.299 0 .43.155.048.06.048.144 0 .071-.024.143zM31.14 18.797h10.006c.28 0 .57.055.57.357s-.29.735-.57.733l-9.962-.094c-.28-.003-.396-.15-.396-.451 0-.302.073-.545.353-.545z"/></g><text
                                                          x="1047.5" y="175" font-weight="bold" textLength="745"
-                                                         transform="scale(.1)">ANALYTICS</text></g></svg>
+                                                         transform="scale(.1)">{{ 'ANALYTICS'|trans({}, 'StreamlinedBundle') }}</text></g></svg>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="201" height="28"
                                              aria-label="MY: STATE DEV TOOLS" style="border-radius:4px"><g
                                                     shape-rendering="crispEdges"><path fill="#555" d="M0 0h55.5v28H0z"/><path
@@ -168,7 +162,7 @@
                                                         style="stroke-width:.3;stroke:#fff"><path
                                                             d="m31.903 15.27.048.872q0 .072-.012.263 0 .191-.143.347-.132.143-.335.143-.192 0-.3-.012-.394 0-.394-.347 0-.287.263-2.307.263-2.032.335-2.618l.12-.98q.06-.407.083-.598.024-.192.072-.383.048-.191.144-.31.179-.228.693-.228.86.43 1.77 2.44.645 1.434.86 1.816.215.383.419.526l2.39-4.16q.252-.18.383-.18.383 0 .586.347.203.347.335.85.143.49.239 1.087.107.598.18 1.255.083.646.155 1.268.167 1.494.25 1.876.096.383.096.55 0 .156-.107.311-.108.144-.3.144-.19 0-.382-.144-.191-.155-.239-.37-.036-.227-.084-.586-.035-.359-.095-.801-.06-.454-.12-.945-.06-.502-.12-.956l-.107-.801-.072-.538q0-.24-.012-.442-.012-.204-.095-.251-.084-.048-.263.12-.168.155-.478.645-.67 1.04-1.937 3.503-.168.298-.443.131-.322-.18-.55-.92l-2.2-4.675q-.286.574-.525 3.802-.036.394-.048.67-.06.298-.06.585zM44.007 21.773q-.251.562-.598.562-.168 0-.251-.156-.072-.143 0-.346.263-1.112.753-2.535.502-1.423.67-1.913-.419-.418-1.316-1.674-1.84-2.582-1.84-2.833 0-.012.011-.024l.455-.454q.944.873 2.462 2.965.383.526.61.884.251-.502.395-.86l.227-.586.25-.598q.407-.992 1.125-2.522.107-.048.227-.048.299 0 .43.155.048.06.048.144 0 .071-.024.143zM31.14 18.797h10.006c.28 0 .57.055.57.357s-.29.735-.57.733l-9.962-.094c-.28-.003-.396-.15-.396-.451 0-.302.073-.545.353-.545z"/></g><text
                                                         x="1282.5" y="175" font-weight="bold" textLength="1215"
-                                                        transform="scale(.1)">STATE DEV TOOLS</text></g></svg>
+                                                        transform="scale(.1)">{{ 'STATE DEV TOOLS'|trans({}, 'StreamlinedBundle') }}</text></g></svg>
                                     </span>
                                 </p>
                                 <div class="flex items-center justify-center w-full">
@@ -181,12 +175,10 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                       d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                                             </svg>
-                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
-                                                        class="font-semibold">Click to upload</span> or drag and drop
+                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                                                {{ '<span class="font-semibold">Click to upload</span> or drag and drop'|trans({}, 'StreamlinedBundle')|raw }}
                                             </p>
-                                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
-                                                (MAX.
-                                                800x400px)</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">{{ 'SVG, PNG, JPG or GIF (MAX. 800x400px)'|trans({}, 'StreamlinedBundle') }}</p>
                                         </div>
                                         <input id="dropzone-file" name="dropzone-file" type="file" class="hidden"/>
                                     </label>
@@ -200,7 +192,7 @@
                 <div>
                     <button type="submit"
                             class="text-md group relative w-full flex justify-center py-2 px-4 border border-transparent font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Build
+                        {{ 'Build'|trans({}, 'StreamlinedBundle') }}
                     </button>
                 </div>
             </form>
@@ -222,56 +214,56 @@
                     </div>
                     <div>
                         <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">
-                            Done!
+                            {{ 'Done! '|trans({}, 'StreamlinedBundle') }}
                         </h2>
                         <p class="text-sm mt-1 text-gray-500 dark:text-gray-400  ">
-                            Just copy and paste the code below based on your needs.
+                            {{ 'Just copy and paste the code below based on your needs. '|trans({}, 'StreamlinedBundle') }}
                         </p>
                     </div>
                 </div>
 
                 <div class="flex  items-center">
                     <div class="mr-6">
-                        <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">Preview:</h4>
+                        <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">{{ 'Preview: '|trans({}, 'StreamlinedBundle') }}</h4>
                         <div id="previewResponse">
 
                         </div>
                     </div>
                     <div class="hidden">
-                        <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">RAW:</h4>
+                        <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">{{ 'RAW: '|trans({}, 'StreamlinedBundle') }}</h4>
                         <div id="rawResponse" rel="noopener noreferrer"
                              class="text-blue-500 font-bold underline "></div>
                     </div>
                 </div>
 
-                <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">HTML:</h4>
+                <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">{{ 'HTML: '|trans({}, 'StreamlinedBundle') }}</h4>
                 <div class="block bg-gray-200 p-4 rounded relative dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-100">
                     <button data-content="htmlResponse"
                             class="copy-code-button absolute right-0 -top-6 h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
-                        Copy Code
+                        {{ 'Copy Code'|trans({}, 'StreamlinedBundle') }}
                     </button>
                     <code id="htmlResponse"
                           class="break-words p-4 whitespace-normal">
-                        HTML
+                        {{ 'HTML'|trans({}, 'StreamlinedBundle') }}
                     </code>
                 </div>
 
-                <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">MARKDOWN:</h4>
+                <h4 class="dark:text-gray-300 mt-3 mb-2 font-bold">  {{ 'MARKDOWN:'|trans({}, 'StreamlinedBundle') }} </h4>
                 <div class="block bg-gray-200 p-4 rounded relative dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-100">
                     <button data-content="markdownResponse"
                             class="copy-code-button absolute right-0 -top-6 h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
-                        Copy Code
+                        {{ 'Copy Code'|trans({}, 'StreamlinedBundle') }}
                     </button>
                     <code id="markdownResponse"
                           class="break-words p-4 whitespace-normal">
-                        Markdown
+                        {{ 'Markdown:'|trans({}, 'StreamlinedBundle') }}
                     </code>
                 </div>
 
                 <div class="flex justify-end">
                     <button type="submit" id="doneButton"
                             class="mt-6 group relative text-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                        Close Popup
+                        {{ 'Close Popup'|trans({}, 'StreamlinedBundle') }}
                     </button>
                 </div>
             </div>
