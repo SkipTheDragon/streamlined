@@ -22,7 +22,7 @@
                         <label for="app"
                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span
                                     class="text-red-500">*</span> {{ 'Select an app:'|trans({}, 'StreamlinedBundle') }} </label>
-                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-4">
+                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500 dark:text-slated-400 mb-4">
                             {{ 'Used to allow the user to have a different website for each app they bought from you.'|trans({}, 'StreamlinedBundle') }} </p>
                         <select required name="app" id="app"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -40,7 +40,7 @@
                     <div class="mb-6">
                         <label for="query" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span
                                     class="text-red-500">*</span>{{ 'Redirect to:'|trans({}, 'StreamlinedBundle') }}</label>
-                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-4">
+                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500 dark:text-slated-400 mb-4">
                             {{ 'Do not include the website URL, just the query.'|trans({}, 'StreamlinedBundle') }} </p>
                         <input id="query" name="query" type="text" required
                                class="appearance-none  relative block w-full px-3 py-2 border rounded-lg focus:outline-none  focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:z-10 sm:text-sm"
@@ -52,7 +52,7 @@
                                     class="text-red-500">*</span>
                             {{ 'Label:'|trans({}, 'StreamlinedBundle') }}
                         </label>
-                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-4">
+                        <p id="helper-checkbox-text" class="text-xs font-normal text-gray-500 dark:text-slated-400 mb-4">
                             {{ 'A descriptive text that will appear on the redirect page and the icon.'|trans({}, 'StreamlinedBundle') }}
                         </p>
                         <input id="label" name="label" type="text" required
@@ -69,12 +69,12 @@
                                            class="sr-only peer">
                                     <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                                     <label for="instant_redirect"
-                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-white">
                                         {{ 'Instant redirect'|trans({}, 'StreamlinedBundle') }}
                                     </label>
                                 </label>
                                 <p id="helper-checkbox-text"
-                                   class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-2">
+                                   class="text-xs font-normal text-gray-500 dark:text-slated-400 mb-2">
                                     {{ 'Instead of waiting 3 seconds we will redirect the user instantly. (Works only if the
                                     user already provided the url to their website.)'|trans({}, 'StreamlinedBundle') }}
                                 </p>
@@ -87,10 +87,10 @@
                                            class="sr-only peer">
                                     <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                                     <label for="hide-url-checkbox"
-                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{{ 'Obfuscate destination'|trans({}, 'StreamlinedBundle') }}</label>
+                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-white">{{ 'Obfuscate destination'|trans({}, 'StreamlinedBundle') }}</label>
                                 </label>
                                 <p id="helper-checkbox-text"
-                                   class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-2">
+                                   class="text-xs font-normal text-gray-500 dark:text-slated-400 mb-2">
                                     {{ 'Encode your "Redirect to" query so that it is not readable to the user. This can
                                     help if you are trying to add utm parameters to your query.'|trans({}, 'StreamlinedBundle') }}
                                 </p>
@@ -103,10 +103,10 @@
                                            class="sr-only peer">
                                     <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                                     <label for="show-redirect-url-checkbox"
-                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">{{ 'Show destination to user'|trans({}, 'StreamlinedBundle') }}</label>
+                                           class="ml-3 text-sm font-medium text-gray-900 dark:text-slated-400">{{ 'Show destination to user'|trans({}, 'StreamlinedBundle') }}</label>
                                 </label>
                                 <p id="helper-checkbox-text"
-                                   class="text-xs font-normal text-gray-500 dark:text-gray-300 mb-2">
+                                   class="text-xs font-normal text-gray-500 dark:text-slated-400 mb-2">
                                     {{ 'Before redirecting we will still show the destination to the user.'|trans({}, 'StreamlinedBundle') }}
                                 </p>
                             </div>
