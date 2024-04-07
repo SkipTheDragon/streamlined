@@ -38,10 +38,10 @@ class Builder extends AbstractController
 
     #[Route('/get-svg/{app}/{label}', name: 'app_get_svg', methods: ["GET"])]
     public function getImage(
-        string $app,
-        string $label,
+        string                                                       $app,
+        string                                                       $label,
         #[Autowire(service: "service_container")] ContainerInterface $container,
-        TranslatorInterface $translator
+        TranslatorInterface                                          $translator
     ): Response
     {
         $config = $container->getParameter('streamlined_bundle.streamlined');
@@ -71,10 +71,10 @@ class Builder extends AbstractController
 
     #[Route('/process-form', name: "process_form", methods: ["POST"])]
     public function processForm(
-        Request $request,
+        Request                                                      $request,
         #[Autowire(service: "router.default")] UrlGeneratorInterface $urlGenerator,
         #[Autowire(service: "service_container")] ContainerInterface $container,
-        TranslatorInterface $translator
+        TranslatorInterface                                          $translator
     ): JsonResponse
     {
         // Retrieve form data
@@ -182,7 +182,7 @@ class Builder extends AbstractController
      * @param array $customIconDimensions
      * @return string xml string
      */
-    private function generateSVG(string $iconSVG, string $text, string $firstBgColor, string $secondBgColor, array $customIconDimensions = [50,50]): string
+    private function generateSVG(string $iconSVG, string $text, string $firstBgColor, string $secondBgColor, array $customIconDimensions = [50, 50]): string
     {
         $iconWidth = 0.3 * 154;  // 30% of the image width
         $iconHeight = 28;

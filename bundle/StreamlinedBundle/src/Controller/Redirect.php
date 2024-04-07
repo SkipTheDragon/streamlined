@@ -5,15 +5,17 @@ namespace Wyverr\StreamlinedBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class Redirect extends AbstractController
 {
-    #[Route('/pointing-to/{app}/{pointer}', name: 'app_redirect_user')]
-    public function pointingTo(string $app, string $pointer, #[Autowire(service: "service_container")] ContainerInterface $container): Response
+    #[Route('/pointing-to/{app}', name: 'app_redirect_user')]
+    public function pointingTo(string $app, Request $request, #[Autowire(service: "service_container")] ContainerInterface $container): Response
     {
+        $pointer = $request->get('pointer');
         $isEncoded = $this->isBase64Encoded($pointer);
         $pointer = $this->decodeBase64($pointer);
         $config = $container->getParameter('streamlined_bundle.streamlined');
@@ -44,15 +46,17 @@ class Redirect extends AbstractController
         ]);
     }
 
-    #[Route('/instant-pointing-to/{app}/{pointer}', name: 'app_redirect_user_instant')]
-    public function instantPointingTo(string $app, string $pointer, #[Autowire(service: "service_container")] ContainerInterface $container): Response
+    #[Route('/instant-pointing-to/{app}', name: 'app_redirect_user_instant')]
+    public function instantPointingTo(string $app, Request $request, #[Autowire(service: "service_container")] ContainerInterface $container): Response
     {
-        //if cookie is set and is a valid url redirect instant else render the app.
+        $pointer = $request->get('pointer');
+
+        // If cookie is set and is a valid url redirect instant else render the app.
         if (isset($_COOKIE[$app]) && filter_var($_COOKIE[$app], FILTER_VALIDATE_URL) !== false) {
-            return $this->redirect(trim($_COOKIE[$app], "/"). "/" . $this->decodeBase64($pointer));
+            return $this->redirect(trim($_COOKIE[$app], "/"). "/" . urldecode($this->decodeBase64($pointer)));
         }
 
-        return $this->pointingTo($app, $pointer, $container);
+        return $this->pointingTo($app, $request, $container);
     }
 
     public function isBase64Encoded(string $string): bool

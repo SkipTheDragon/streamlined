@@ -16,15 +16,15 @@
 
             {% if show_link %}
                 <p class="mt-2 text-center text-sm text-gray-600 dark:text-slate-400">
-                    {% trans with {'%user_instance%': user_instance, '%pointer%': pointer}  from 'StreamlinedBundle' %}
-                        You are on your way to: <b>%user_instance%/%pointer%</b>
+                    {% trans with {'%url%': url|url_decode}  from 'StreamlinedBundle' %}
+                        You are on your way to: <b>%url%</b>
                     {% endtrans %}
                 </p>
             {% endif %}
 
                 <script>
                     setTimeout(function () {
-                         window.location.href = '{{ url|escape }}';
+                         window.location.href = '{{ url|url_decode }}';
                     }, 3000);
                 </script>
 
