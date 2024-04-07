@@ -2,6 +2,8 @@
 
 Crafting instructions and tutorials for your clientele consumes valuable time that could be allocated elsewhere. However, disregarding this aspect risks financial loss, which isn't conducive to business success. With Simplified Connectivity, just share a link and simplify your workload!
 
+The code is in bundle/StreamlinedBundle. I added Symfony inside the repo just for easier testing and deploy.
+
 # Demo
 
 You can see the demo [here](https://projects.wyverr.com/streamlined).
@@ -15,6 +17,7 @@ Then after you have cloned the project, open your terminal and run the following
 ```bash
 cd streamlined/
 lando start # This will start/fetch the docker containers, install the dependencies (yarn and composer) and migrate and seed manticore data
+cd bundle/StreamlinedBundle/
 lando yarn watch # This will build the assets in case they are not built already
 ```
 
@@ -53,8 +56,8 @@ Key Features:
 - Compatible with various platforms (WordPress, WooCommerce, etc.)
 - Reduces confusion, enhances customer satisfaction, and bolsters sales.
 - User-friendly and simple installation.
-- Premium support
-- Lifetime updates
+- Translations
+- Customizable
 - Primarily designed for developers but accessible to all (requires minimal programming knowledge, mainly YAML).
 
 ## Inspired by HomeAssistant's "My HomeAssistant" tool: [https://my.home-assistant.io/](https://my.home-assistant.io/)
