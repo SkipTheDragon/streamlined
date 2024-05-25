@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "58ebcf261870474c11dbc162fa2f0000",
+    "content-hash": "ca7c9210ef40a6452992afd6ca46f210",
     "packages": [
         {
             "name": "league/html-to-markdown",
@@ -97,25 +97,26 @@
         },
         {
             "name": "meyfa/php-svg",
-            "version": "v0.14.7",
+            "version": "v0.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/meyfa/php-svg.git",
-                "reference": "f50d39e0c97042881e303f7d5d1d09aa88296def"
+                "reference": "51251be24fe6415ef3275a7d47ab5c44c8b5674b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/meyfa/php-svg/zipball/f50d39e0c97042881e303f7d5d1d09aa88296def",
-                "reference": "f50d39e0c97042881e303f7d5d1d09aa88296def",
+                "url": "https://api.github.com/repos/meyfa/php-svg/zipball/51251be24fe6415ef3275a7d47ab5c44c8b5674b",
+                "reference": "51251be24fe6415ef3275a7d47ab5c44c8b5674b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3.0"
+                "php": ">=7.4.0"
             },
             "require-dev": {
                 "meyfa/phpunit-assert-gd": "^v3.0.0",
-                "phpmd/phpmd": "^2.13.0",
-                "phpunit/phpunit": "^9.5.26"
+                "phpmd/phpmd": "^2.15.0",
+                "phpunit/phpunit": "^9.6.16",
+                "rector/rector": "^1.0"
             },
             "suggest": {
                 "ext-gd": "Needed to rasterize images",
@@ -144,7 +145,7 @@
             ],
             "support": {
                 "issues": "https://github.com/meyfa/php-svg/issues",
-                "source": "https://github.com/meyfa/php-svg/tree/v0.14.7"
+                "source": "https://github.com/meyfa/php-svg/tree/v0.15.0"
             },
             "funding": [
                 {
@@ -152,7 +153,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-09T23:20:59+00:00"
+            "time": "2024-03-17T17:47:21+00:00"
         },
         {
             "name": "psr/cache",
@@ -2753,82 +2754,6 @@
             "time": "2024-02-15T11:33:06+00:00"
         },
         {
-            "name": "symfony/ux-translator",
-            "version": "v2.16.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/ux-translator.git",
-                "reference": "d825dd3e3dbc4791ac41b1b7bd30bc7edcc2674f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-translator/zipball/d825dd3e3dbc4791ac41b1b7bd30bc7edcc2674f",
-                "reference": "d825dd3e3dbc4791ac41b1b7bd30bc7edcc2674f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "symfony/console": "^5.4|^6.0|^7.0",
-                "symfony/filesystem": "^5.4|^6.0|^7.0",
-                "symfony/string": "^5.4|^6.0|^7.0",
-                "symfony/translation": "^5.4|^6.0|^7.0"
-            },
-            "require-dev": {
-                "symfony/framework-bundle": "^5.4|^6.0|^7.0",
-                "symfony/phpunit-bridge": "^5.2|^6.0|^7.0",
-                "symfony/var-dumper": "^5.4|^6.0|^7.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "thanks": {
-                    "name": "symfony/ux",
-                    "url": "https://github.com/symfony/ux"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\UX\\Translator\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Hugo Alliaume",
-                    "email": "hugo@alliau.me"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Exposes Symfony Translations directly to JavaScript.",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "symfony-ux"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/ux-translator/tree/v2.16.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-02-29T16:20:59+00:00"
-        },
-        {
             "name": "symfony/var-dumper",
             "version": "v7.0.6",
             "source": {
@@ -3136,13 +3061,13 @@
             "dist": {
                 "type": "path",
                 "url": "bundle/StreamlinedBundle",
-                "reference": "7090bc358025e2d8ec0cd762cb1a985651436d02"
+                "reference": "beb52779d9b63560aec2d9195bb6f809d81f7b2d"
             },
             "require": {
                 "ext-ctype": "*",
                 "ext-iconv": "*",
                 "league/html-to-markdown": "^5.1",
-                "meyfa/php-svg": "^0.14.4",
+                "meyfa/php-svg": "^0.15.0",
                 "php": ">=8.1",
                 "symfony/asset": "^7.0",
                 "symfony/config": "^7.0",
@@ -3622,10 +3547,10 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.1",
+        "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.6.0"
 }
